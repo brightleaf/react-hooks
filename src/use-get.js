@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react'
 import { reducer } from './reducer'
 
-export const useGet = url => {
+const useGet = url => {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
@@ -21,4 +21,5 @@ export const useGet = url => {
   return state
 }
 
+export { useGet }
 export default useGet
