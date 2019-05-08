@@ -36,7 +36,9 @@ module.exports = {
   resolve: {
     extensions: ['*', '.mjs', '.js', '.jsx'],
     modules: ['node_modules', 'src'],
-    alias: {},
+    alias: {
+      '@brightleaf/hooks': path.resolve(__dirname, '../src'),
+    },
   },
   output: {
     path: path.join(__dirname, '/dist'),
