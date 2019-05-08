@@ -29,13 +29,22 @@
   <div class="container">
   <h1 id="brightleaf-react-hooks">Brightleaf React Hooks</h1>
 <p>Useful React Hooks</p>
+<ul>
+<li><code>useFetch</code> - Hook to use Fetch</li>
+<li><code>useGet</code> - Hook to make a get request</li>
+<li><code>usePost</code> - Hook to make an HTTP Post</li>
+<li><code>useClickOutside</code> - Hook to handle a click outside an element</li>
+<li><code>useGraphQL</code> - Hook to make a GraphQL request</li>
+<li><code>useNes</code> - Hook to connect to Hapijs NES</li>
+<li><code>useWebSockets</code> - Hook to interact with WebSockets</li>
+</ul>
 <h2 id="graphql-hook">GraphQL Hook</h2>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
-<span class="hljs-keyword">import</span> { useQuery } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/hooks'</span>
+<span class="hljs-keyword">import</span> { useGraphQL } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/hooks'</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
   <span class="hljs-keyword">const</span> [id, setId] = useState(<span class="hljs-number">1</span>)
-  <span class="hljs-keyword">const</span> { data, loading, error } = useQuery(
+  <span class="hljs-keyword">const</span> { data, loading, error } = useGraphQL(
     <span class="hljs-string">'https://swapiql.herokuapp.com/graphql'</span>,
     <span class="hljs-string">`query Person($id: ID) {
       person(id: $id) {
@@ -81,6 +90,45 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span>
   )
 }</span></code></pre>
+<h2 id="get-hook">Get Hook</h2>
+<p>```javascript<br />
+import React, { useState } from 'react'<br />
+import { useGet } from '@brightleaf/react-hooks'<br />
+export default () =&gt; {<br />
+  const [id, setId] = useState(1)</p>
+<p>const { data, error, loading } = useGet(<br />
+    <code>https://swapiql.herokuapp.com/api/characters/${id}</code><br />
+  )<br />
+  if (error) {<br />
+    return (<br />
+      <div className="App">
+        <h1>Error Getting Data</h1>
+      </div><br />
+    )<br />
+  }<br />
+  if (loading) {<br />
+    return (<br />
+      <div className="App">
+        <h1>Loading Data</h1>
+      </div><br />
+    )<br />
+  }<br />
+  return (<br />
+    <div className="App">
+      <h1>{data[0].name}</h1>
+      <h2>Pick a number</h2>
+      <div className="select">
+        <div
+          onClick={e => {
+            setId(2)
+          }}
+        >
+          2
+        </div><br />
+      </div><br />
+    </div><br />
+  )<br />
+}</p>
   </div>
 <a href="https://www.github.com/brightleaf/cache" class="github-corner" aria-label="Open GitHub project"><svg width="80"
     height="80" viewBox="0 0 250 250" style="position: absolute; top: 0px; fill: rgb(255, 255, 255); right: 0px;">
