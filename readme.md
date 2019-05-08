@@ -122,7 +122,7 @@ import { useClickOutside } from '@brightleaf/react-hooks'
 
 export default () => {
   const [menu, setMenu] = useState(false)
-  const navMenu Ref= useRef()
+  const navMenu= useRef()
   const hideDropDown = () => {
     setMenu(false)
   }
@@ -136,7 +136,7 @@ export default () => {
             type="button"
             className="dropdown-trigger"
             onClick={e => {
-              setMenu(!ddG)
+              setMenu(!menu)
             }}
           >
             Menu
