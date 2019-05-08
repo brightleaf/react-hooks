@@ -14,7 +14,7 @@ Useful React Hooks
 
 ```javascript
 import React, { useState } from 'react'
-import { useGraphQL } from '@brightleaf/hooks'
+import { useGraphQL } from '@brightleaf/react-hooks'
 
 export default () => {
   const [id, setId] = useState(1)
@@ -43,7 +43,7 @@ export default () => {
 ```javascript
 import React from 'react'
 import { Button, Form, TextBox } from 'react-form-elements'
-import { usePost } from '@brightleaf/hooks'
+import { usePost } from '@brightleaf/react-hooks'
 
 export default () => {
   const { data, error, loading, postData } = usePost(
@@ -112,3 +112,42 @@ export default () => {
     </div>
   )
 }
+```
+
+## Click Outside Hook
+
+```javascript
+import React, { useState, useRef } from 'react'
+import { useClickOutside } from '@brightleaf/react-hooks'
+
+export default () => {
+  const [menu, setMenu] = useState(false)
+  const navMenu Ref= useRef()
+  const hideDropDown = () => {
+    setMenu(false)
+  }
+  useClickOutside(navMenu, hideDropDowns, menu)
+
+  return (
+    <div className="App">
+      <nav ref={navMenu}>
+        <div className={`dropdown ${menu ? 'active' : ' '}`}>
+          <button
+            type="button"
+            className="dropdown-trigger"
+            onClick={e => {
+              setMenu(!ddG)
+            }}
+          >
+            Menu
+          </button>
+          <div>
+            ...// items
+          </div>
+        </div>
+      </nav>
+      ... // rest of page
+    </div>
+  )
+}
+```
