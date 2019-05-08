@@ -2,15 +2,23 @@
 
 Useful React Hooks
 
+* `useFetch` - Hook to use Fetch
+* `useGet` - Hook to make a get request
+* `usePost` - Hook to make an HTTP Post
+* `useClickOutside` - Hook to handle a click outside an element
+* `useGraphQL` - Hook to make a GraphQL request
+* `useNes` - Hook to connect to Hapijs NES
+* `useWebSockets` - Hook to interact with WebSockets
+
 ## GraphQL Hook
 
 ```javascript
 import React, { useState } from 'react'
-import { useQuery } from '@brightleaf/hooks'
+import { useGraphQL } from '@brightleaf/hooks'
 
 export default () => {
   const [id, setId] = useState(1)
-  const { data, loading, error } = useQuery(
+  const { data, loading, error } = useGraphQL(
     'https://swapiql.herokuapp.com/graphql',
     `query Person($id: ID) {
       person(id: $id) {
@@ -62,3 +70,45 @@ export default () => {
 }
 
 ```
+
+## Get Hook
+
+```javascript
+import React, { useState } from 'react'
+import { useGet } from '@brightleaf/react-hooks'
+export default () => {
+  const [id, setId] = useState(1)
+
+  const { data, error, loading } = useGet(
+    `https://swapiql.herokuapp.com/api/characters/${id}`
+  )
+  if (error) {
+    return (
+      <div className="App">
+        <h1>Error Getting Data</h1>
+      </div>
+    )
+  }
+  if (loading) {
+    return (
+      <div className="App">
+        <h1>Loading Data</h1>
+      </div>
+    )
+  }
+  return (
+    <div className="App">
+      <h1>{data[0].name}</h1>
+      <h2>Pick a number</h2>
+      <div className="select">
+        <div
+          onClick={e => {
+            setId(2)
+          }}
+        >
+          2
+        </div>
+      </div>
+    </div>
+  )
+}
