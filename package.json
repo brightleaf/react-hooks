@@ -22,7 +22,8 @@
   "author": "Kevin Isom <kevin.isom@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "graphql-request": "^1.8.2"
+    "graphql-request": "^1.8.2",
+    "@hapi/nes": "^11.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -31,7 +32,6 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
-    "@hapi/nes": "^11.1.0",
     "@kev_nz/eslint-config": "^3.3.0",
     "@kev_nz/publisher": "^4.0.1",
     "@reach/router": "^1.2.1",
