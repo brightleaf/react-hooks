@@ -1,11 +1,11 @@
-import { useEffect, useReducer } from 'react'
+import { useReducer } from 'react'
 import { reducer } from './reducer'
 
 export const usePost = (url = '') => {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
-    loading: true,
+    loading: false,
   })
 
   const postData = async data => {
@@ -26,9 +26,6 @@ export const usePost = (url = '') => {
     const result = await resp.json()
     dispatch({ type: 'success', payload: { data: result } })
   }
-  useEffect(() => {
-    // postData(url)
-  }, [url])
 
   return { ...state, postData }
 }

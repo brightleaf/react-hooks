@@ -21,4 +21,5 @@ const useFetch = (url, options) => {
   return state
 }
 
+export { useFetch }
 export default useFetch
