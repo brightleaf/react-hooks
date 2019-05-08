@@ -22,7 +22,7 @@ export default () => {
     }`,
     {}
   )
-  console.log('data', data)
+
   if (loading) {
     return <div>Loading</div>
   }

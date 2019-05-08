@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import useGet from '../../src/use-get'
+import { useGet } from '@brightleaf/hooks'
 export default () => {
-  console.info('fetch view', useGet)
-
   const [id, setId] = useState(1)
-  console.log('id', id)
+
   const { data, error, loading } = useGet(
     `https://swapiql.herokuapp.com/api/characters/${id}`
   )
-  console.log({ data, error, loading })
-  console.log('render')
+  if (error) {
+    return (
+      <div className="App">
+        <h1>Error Getting Data</h1>
+      </div>
+    )
+  }
   if (loading) {
     return (
       <div className="App">

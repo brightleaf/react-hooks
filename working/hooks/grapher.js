@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import useQuery from '../../src/use-graphql'
 export default () => {
-  console.info('fetch', useQuery)
   const [id, setId] = useState(1)
   const { data, loading, error } = useQuery(
     'https://swapiql.herokuapp.com/graphql',
@@ -25,10 +24,10 @@ export default () => {
   )
   console.log('data', data)
   if (loading) {
-    return <div>Loading</div>
+    return <div>Loading Data</div>
   }
   if (error) {
-    return <div>error</div>
+    return <div>Error getting graphql data</div>
   }
   return (
     <div className="App">

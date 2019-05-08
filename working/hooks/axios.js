@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import useAxios from '../../src/use-axios'
 export default () => {
-  console.info('fetch view', useAxios)
-
   const [id, setId] = useState(1)
-  console.log('id', id)
+
   const { data, error, loading } = useAxios(
     `https://swapiql.herokuapp.com/api/characters/${id}`
   )
-  console.log({ data, error, loading })
-  console.log('render')
+
+  if (error) {
+    return (
+      <div className="App">
+        <h1>Error Getting Data</h1>
+      </div>
+    )
+  }
   if (loading) {
     return (
       <div className="App">

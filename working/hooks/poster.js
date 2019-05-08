@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
-import { useFetch } from '@brightleaf/hooks'
+import usePost from '../../src/use-post'
 export default () => {
-  const [id, setId] = useState(1)
-
-  const { data, error, loading } = useFetch(
-    `https://swapiql.herokuapp.com/api/characters/${id}`
+  const { data, error, loading, postData } = usePost(
+    `https://kev-pi.herokuapp.com/api/echo`
   )
-
   if (error) {
     return (
       <div className="App">
-        <h1>Error Fetching Data</h1>
+        <h1>Error Posting Data</h1>
       </div>
     )
   }
+
   if (loading) {
     return (
       <div className="App">
@@ -21,15 +19,20 @@ export default () => {
       </div>
     )
   }
+
   return (
     <div className="App">
-      <h1>{data[0].name}</h1>
-      <h2>Pick a number</h2>
+      <h3>Result</h3>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <h2>Post</h2>
       <div className="select">
         <div
           onClick={e => {
             console.log('click')
-            setId(1)
+            postData({
+              id: 1,
+              message: 'The message',
+            })
           }}
         >
           1
@@ -37,7 +40,10 @@ export default () => {
         <div
           onClick={e => {
             console.log('click')
-            setId(2)
+            postData({
+              id: 2,
+              message: 'The message',
+            })
           }}
         >
           2
@@ -45,7 +51,10 @@ export default () => {
         <div
           onClick={e => {
             console.log('click')
-            setId(3)
+            postData({
+              id: 3,
+              message: 'The message',
+            })
           }}
         >
           3
@@ -53,7 +62,10 @@ export default () => {
         <div
           onClick={e => {
             console.log('click')
-            setId(4)
+            postData({
+              id: 4,
+              message: 'The message',
+            })
           }}
         >
           4
@@ -61,7 +73,10 @@ export default () => {
         <div
           onClick={e => {
             console.log('click')
-            setId(5)
+            postData({
+              id: 5,
+              message: 'The message',
+            })
           }}
         >
           5
@@ -69,7 +84,10 @@ export default () => {
         <div
           onClick={e => {
             console.log('click')
-            setId(6)
+            postData({
+              id: 6,
+              message: 'The message',
+            })
           }}
         >
           6
