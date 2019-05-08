@@ -19,7 +19,8 @@
     "utils",
     "tools"
   ],
-  "author": "Kevin Isom <kevin.isom@gmail.com>",
+  "homepage": "https://brightleaf.github.io/react-hooks",
+  "author": "Brightleaf JS",
   "license": "MIT",
   "dependencies": {
     "graphql-request": "^1.8.2",
