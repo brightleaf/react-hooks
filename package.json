@@ -5,7 +5,7 @@
   "files": [
     "/lib"
   ],
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server --config ./webpack/webpack.config.js --mode development",
@@ -33,6 +33,7 @@
     "@babel/preset-react": "^7.0.0",
     "@hapi/nes": "^11.1.0",
     "@kev_nz/eslint-config": "^3.3.0",
+    "@kev_nz/publisher": "^4.0.1",
     "@reach/router": "^1.2.1",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.5",
