@@ -1,14 +1,17 @@
 {
   "name": "@brightleaf/react-hooks",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Useful react hooks",
   "files": [
-    "/src"
+    "/lib"
   ],
   "main": "./src/index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server --config ./webpack/webpack.config.js --mode development"
+    "dev": "webpack-dev-server --config ./webpack/webpack.config.js --mode development",
+    "preversion": "npx isom build",
+    "postversion": "npm publish --access=public",
+    "postpublish": "git push origin --all --follow-tags && npx publisher"
   },
   "keywords": [
     "react",
@@ -18,6 +21,9 @@
   ],
   "author": "Kevin Isom <kevin.isom@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "graphql-request": "^1.8.2"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.3",
@@ -25,6 +31,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@hapi/nes": "^11.1.0",
     "@kev_nz/eslint-config": "^3.3.0",
     "@reach/router": "^1.2.1",
     "axios": "^0.18.0",
@@ -32,11 +39,12 @@
     "copy-webpack-plugin": "^5.0.2",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
-    "graphql-request": "^1.8.2",
     "html-webpack-plugin": "^3.2.0",
     "isom": "^1.0.0",
+    "jest": "^24.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-hooks-testing-library": "^0.5.0",
     "react-hot-loader": "^4.8.4",
     "react-testing-library": "^6.1.2",
     "style-loader": "^0.23.1",
@@ -45,8 +53,6 @@
     "webpack-dev-server": "^3.3.1"
   },
   "peerDependencies": {
-    "axios": ">= 0.18.0",
-    "graphql-request": ">=1.8.2",
     "react": ">= 16.8.6"
   }
 }
