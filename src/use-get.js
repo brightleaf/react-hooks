@@ -8,17 +8,19 @@ const useGet = url => {
     loading: true,
   })
 
-  const fetchQuery = async url => {
+  const getUrl = async url => {
     dispatch({ type: 'get' })
     const resp = await fetch(url)
     const data = await resp.json()
     dispatch({ type: 'success', payload: { data } })
   }
   useEffect(() => {
-    fetchQuery(url)
+    if (url) {
+      getUrl(url)
+    }
   }, [url])
 
-  return state
+  return { ...state, getUrl }
 }
 
 export { useGet }
