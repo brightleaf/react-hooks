@@ -1,23 +1,28 @@
 import { useEffect, useReducer } from 'react'
 import Nes from '@hapi/nes/lib/client'
 
-const reducer = (state, action) => {
+const reducer = (state, action, ...other) => {
   switch (action.type) {
     case 'connecting':
-      return { ...state, connecting: true }
+      return { ...state, connecting: true, connected: false }
+    case 'connected':
+      return { ...state, connecting: false, connected: true }
+    case 'disconnected':
+      return { ...state, connecting: false, connected: false }
     case 'message':
+      const message = [].concat(state.message)
+      message.push(action.payload.data)
       return {
         ...state,
-        message: state.message + action.payload.data,
+        message,
         error: null,
-        loading: false,
+        connecting: false,
       }
     case 'error':
       return {
         ...state,
-        message: null,
         error: action.payload.error,
-        loading: false,
+        connecting: false,
       }
     default:
       return state
@@ -27,21 +32,31 @@ const useNes = (url = 'ws://localhost:4567') => {
   const [state, dispatch] = useReducer(reducer, {
     message: [],
     error: null,
-    loading: true,
+    connecting: true,
+    connected: false,
   })
   var client = new Nes.Client(url)
 
-  const connectClient = async () => {
-    dispatch({ type: 'get' })
-    await client.connect()
-    client.onUpdate = update => {
-      dispatch({ type: 'message', payload: { data: update } })
-    }
-
-    dispatch({ type: 'connecting', payload: {} })
-  }
-
   useEffect(() => {
+    const connectClient = async () => {
+      dispatch({ type: 'connecting', payload: {} })
+      return new Promise(async (resolve, reject) => {
+        client.onConnect = update => {
+          dispatch({ type: 'connected' })
+          return resolve()
+        }
+        client.onDisconnect = () => {
+          dispatch({ type: 'disconnected' })
+          return resolve()
+        }
+        await client.connect()
+
+        client.onUpdate = update => {
+          dispatch({ type: 'message', payload: { data: update } })
+          return resolve()
+        }
+      })
+    }
     connectClient()
   }, [])
   return { ...state }
