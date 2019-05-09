@@ -1,9 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './working/index.js',
   module: {
     rules: [
       {
@@ -21,15 +22,29 @@ module.exports = {
       },
     ],
   },
-  plugins: [],
-
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Custom template',
+      template: './working/index.html',
+      historyApiFallback: true,
+    }),
+    new CopyPlugin([
+      {
+        from: path.join(process.cwd(), '/public'),
+        to: path.join(process.cwd(), '/dist'),
+      },
+    ]),
+  ],
   resolve: {
     extensions: ['*', '.mjs', '.js', '.jsx'],
     modules: ['node_modules', 'src'],
-    alias: {},
+    alias: {
+      '@brightleaf/react-hooks': path.resolve(__dirname, '../src'),
+    },
   },
   output: {
-    path: path.join(__dirname, '/lib'),
-    filename: 'index.js',
+    path: path.join(process.cwd(), '/dist/examples'),
+    publicPath: '/react-hooks/examples',
+    filename: 'bundle.js',
   },
 }
