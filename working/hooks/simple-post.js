@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, TextBox } from 'react-form-elements'
-import { usePost } from '@brightleaf/hooks'
+import { usePost } from '@brightleaf/react-hooks'
 
 export default () => {
   const { data, error, loading, postData } = usePost(

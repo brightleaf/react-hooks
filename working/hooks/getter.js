@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useGet } from '@brightleaf/hooks'
+import { useGet } from '@brightleaf/react-hooks'
 export default () => {
   const [id, setId] = useState(1)
 
-  const { data, error, loading } = useGet(
+  const { data, error, loading, getUrl } = useGet(
     `https://swapiql.herokuapp.com/api/characters/${id}`
   )
   if (error) {
@@ -25,54 +25,60 @@ export default () => {
       <h1>{data[0].name}</h1>
       <h2>Pick a number</h2>
       <div className="select">
-        <div
+        <button
+          type="button"
+          className="button mar-r-sm"
           onClick={e => {
-            console.log('click')
-            setId(1)
+            getUrl('https://swapiql.herokuapp.com/api/characters/1')
           }}
         >
           1
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
+          className="button mar-r-sm"
           onClick={e => {
-            console.log('click')
-            setId(2)
+            getUrl('https://swapiql.herokuapp.com/api/characters/2')
           }}
         >
           2
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
+          className="button mar-r-sm"
           onClick={e => {
-            console.log('click')
-            setId(3)
+            getUrl('https://swapiql.herokuapp.com/api/characters/3')
           }}
         >
           3
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
+          className="button mar-r-sm"
           onClick={e => {
-            console.log('click')
             setId(4)
           }}
         >
           4
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
+          className="button mar-r-sm"
           onClick={e => {
-            console.log('click')
             setId(5)
           }}
         >
           5
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
+          className="button mar-r-sm"
           onClick={e => {
-            console.log('click')
             setId(6)
           }}
         >
           6
-        </div>
+        </button>
       </div>
     </div>
   )
