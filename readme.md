@@ -79,7 +79,7 @@ import { useGet } from '@brightleaf/react-hooks'
 export default () => {
   const [id, setId] = useState(1)
 
-  const { data, error, loading } = useGet(
+  const { data, error, loading, getUrl } = useGet(
     `https://swapiql.herokuapp.com/api/characters/${id}`
   )
   if (error) {
@@ -103,7 +103,7 @@ export default () => {
       <div className="select">
         <div
           onClick={e => {
-            setId(2)
+            getUrl('https://swapiql.herokuapp.com/api/characters/2')
           }}
         >
           2
