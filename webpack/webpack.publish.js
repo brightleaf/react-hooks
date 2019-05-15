@@ -44,7 +44,7 @@ module.exports = {
   },
   output: {
     path: path.join(process.cwd(), '/dist/examples'),
-    publicPath: '/react-hooks/examples',
+    publicPath: '/react-hooks/examples/',
     filename: 'bundle.js',
   },
 }

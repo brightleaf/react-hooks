@@ -12,17 +12,19 @@ export default class App extends Component {
     return (
       <Fragment>
         <React.Suspense fallback={<div>Loading</div>}>
-          <Link to="/">Fetch</Link> | <Link to="/getter">Get</Link> |{' '}
-          <Link to="/graph">GraphQL</Link> |{' '}
-          <Link to="/grapher">GraphQL Vars</Link> |{' '}
-          <Link to="/poster">Poster</Link> | <Link to="/nes">Nes</Link>
+          <Link to="/react-hooks/examples">Fetch</Link> |{' '}
+          <Link to="/getter">Get</Link> |{' '}
+          <Link to="/react-hooks/examples/graph">GraphQL</Link> |{' '}
+          <Link to="/react-hooks/examples/grapher">GraphQL Vars</Link> |{' '}
+          <Link to="/react-hooks/examples/poster">Poster</Link> |{' '}
+          <Link to="/react-hooks/examples/nes">Nes</Link>
           <Router>
-            <Fetch path="/" />
-            <Getter path="/getter" />
-            <Graph path="/graph" />
-            <Grapher path="/grapher" />
-            <Poster path="/poster" />
-            <Nes path="/nes" />
+            <Fetch path="/react-hooks/examples" />
+            <Getter path="/react-hooks/examples/getter" />
+            <Graph path="/react-hooks/examples/graph" />
+            <Grapher path="/react-hooks/examples/grapher" />
+            <Poster path="/react-hooks/examples/poster" />
+            <Nes path="/react-hooks/examples/nes" />
           </Router>
         </React.Suspense>
       </Fragment>
