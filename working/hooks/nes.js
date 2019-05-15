@@ -4,7 +4,7 @@ export default () => {
   const { getUrl } = useGet()
 
   const { message, error, connecting, connected } = useNes(
-    'ws://kev-pi.herokuapp.com'
+    'wss://kev-pi.herokuapp.com'
   )
 
   if (error) {
