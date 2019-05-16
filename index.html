@@ -163,6 +163,63 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   )
 }</code></pre>
+<h1 id="nes-hook">NES Hook</h1>
+<p>Client hook for connecting to an <a href="https://github.com/hapijs/nes">NES</a> instance</p>
+<h3 id="messages">Messages</h3>
+<pre><code class="hljs javascript language-javascript">import React from 'react'
+import { useNes } from '@brightleaf/react-hooks'
+export default () =&gt; {
+
+  const { message, error, connecting, connected } = useNes(
+    'wss://kev-pi.herokuapp.com'
+  )
+
+  if (error) {
+    return &lt;div&gt;&lt;h1&gt;Error&lt;/h1&gt;&lt;/div&gt;
+  }
+  const connectMessage = connecting ? &lt;div&gt;Connecting&lt;/div&gt; : &lt;div&gt;Not Connecting&lt;/div&gt;
+  const connectedMessage = connected ? &lt;div&gt;Connected&lt;/div&gt; : &lt;div&gt;Not Connected&lt;/div&gt;
+
+  const messages = message.map((m, index) =&gt; &lt;div key={`key-${index}`}&gt;{m}&lt;/div&gt;)
+  return (
+    &lt;div className="App"&gt;
+      &lt;h1&gt;Messages from Server&lt;/h1&gt;
+      &lt;div&gt;{messages}&lt;/div&gt;
+      &lt;div&gt;
+        &lt;b&gt;Status Messages&lt;/b&gt;
+        {connectMessage}
+        {connectedMessage}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+<h3 id="subscriptions">Subscriptions</h3>
+<p>Use the client from the hook to create a real time chat room</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState}  <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useNes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { client } = useNes(<span class="hljs-string">'wss://kev-pi.herokuapp.com'</span>)
+  <span class="hljs-keyword">const</span> [messages, setMessages] = useState([{
+    <span class="hljs-attr">body</span>: <span class="hljs-string">'welcome'</span>,
+    <span class="hljs-attr">user</span>: <span class="hljs-string">'system'</span>
+  }])
+  <span class="hljs-keyword">const</span> addMessage = <span class="hljs-function">(<span class="hljs-params">msg</span>) =&gt;</span>  {
+    messages.push(msg)
+    setMessages([...messages])
+  }
+  <span class="hljs-keyword">const</span> handler = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">update, flags</span>) </span>{
+    addMessage(update)
+  }
+  <span class="hljs-comment">// subscribe to a channel</span>
+  client.subscribe(<span class="hljs-string">'/rooms/general'</span>, handler);
+
+  <span class="hljs-keyword">const</span> messageList = messages.map(<span class="hljs-function">(<span class="hljs-params">{user, body}, index</span>) =&gt;</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">key-</span>${<span class="hljs-attr">index</span>}`}&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{user}:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>{body}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>))
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      {messageList}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}</code></pre>
   </div>
 <a href="https://www.github.com/brightleaf/react-hooks" class="github-corner" aria-label="Open GitHub project"><svg
     width="80" height="80" viewBox="0 0 250 250"
