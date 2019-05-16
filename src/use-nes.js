@@ -59,7 +59,7 @@ const useNes = (url = 'ws://localhost:4567') => {
     }
     connectClient()
   }, [])
-  return { ...state }
+  return { ...state, client }
 }
 
 export { useNes }
