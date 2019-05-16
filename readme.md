@@ -151,3 +151,76 @@ export default () => {
   )
 }
 ```
+
+# NES Hook
+
+
+
+Client hook for connecting to an [NES](https://github.com/hapijs/nes) instance
+
+
+### Messages
+
+```javascript
+import React from 'react'
+import { useNes } from '@brightleaf/react-hooks'
+export default () => {
+
+  const { message, error, connecting, connected } = useNes(
+    'wss://kev-pi.herokuapp.com'
+  )
+
+  if (error) {
+    return <div><h1>Error</h1></div>
+  }
+  const connectMessage = connecting ? <div>Connecting</div> : <div>Not Connecting</div>
+  const connectedMessage = connected ? <div>Connected</div> : <div>Not Connected</div>
+
+  const messages = message.map((m, index) => <div key={`key-${index}`}>{m}</div>)
+  return (
+    <div className="App">
+      <h1>Messages from Server</h1>
+      <div>{messages}</div>
+      <div>
+        <b>Status Messages</b>
+        {connectMessage}
+        {connectedMessage}
+      </div>
+    </div>
+  )
+}
+
+```
+
+### Subscriptions
+
+Use the client from the hook to create a real time chat room
+
+```javascript
+import React, { useState}  from 'react'
+import { useNes } from '@brightleaf/react-hooks'
+export default () => {
+  const { client } = useNes('wss://kev-pi.herokuapp.com')
+  const [messages, setMessages] = useState([{
+    body: 'welcome',
+    user: 'system'
+  }])
+  const addMessage = (msg) =>  {
+    messages.push(msg)
+    setMessages([...messages])
+  }
+  const handler = function(update, flags) {
+    addMessage(update)
+  }
+  // subscribe to a channel
+  client.subscribe('/rooms/general', handler);
+
+  const messageList = messages.map(({user, body}, index) => (<div key={`key-${index}`}><b>{user}:</b>{body}</div>))
+  return (
+    <div>
+      {messageList}
+    </div>
+  )
+}
+```
+
