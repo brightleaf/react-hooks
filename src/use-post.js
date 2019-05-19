@@ -9,7 +9,6 @@ export const usePost = (url = '') => {
   })
 
   const postData = async data => {
-    console.info('post data')
     dispatch({ type: 'get' })
     const resp = await fetch(url, {
       method: 'POST',
