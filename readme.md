@@ -9,6 +9,7 @@ Useful React Hooks
 * `useGraphQL` - Hook to make a GraphQL request
 * `useNes` - Hook to connect to Hapijs NES
 * `useWebSockets` - Hook to interact with WebSockets
+* `useLocalStorage` - Hook to local storage
 
 ## GraphQL Hook
 
@@ -224,3 +225,22 @@ export default () => {
 }
 ```
 
+## Local Storage Hook
+
+```javascript
+import React, { useRef } from 'react'
+import { useLocalStorage } from '@brightleaf/react-hooks'
+
+export default () => {
+  const [count, setCount] = useLocalStorage(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
