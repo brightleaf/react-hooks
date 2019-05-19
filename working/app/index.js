@@ -7,7 +7,7 @@ const Grapher = React.lazy(() => import('../hooks/grapher'))
 const Getter = React.lazy(() => import('../hooks/getter'))
 const Poster = React.lazy(() => import('../hooks/poster'))
 const Nes = React.lazy(() => import('../hooks/nes'))
-
+const Local = React.lazy(() => import('../hooks/local'))
 const source = createHashSource()
 const history = createHistory(source)
 
@@ -21,7 +21,8 @@ export default class App extends Component {
             <Link to="examples/graph">GraphQL</Link> |{' '}
             <Link to="examples/grapher">GraphQL Vars</Link> |{' '}
             <Link to="examples/poster">Poster</Link> |{' '}
-            <Link to="examples/nes">Nes</Link>
+            <Link to="examples/nes">Nes</Link> |{' '}
+            <Link to="examples/local">Local Storage</Link>
             <Router>
               <Fetch path="examples" />
               <Getter path="examples/getter" />
@@ -29,6 +30,7 @@ export default class App extends Component {
               <Grapher path="examples/grapher" />
               <Poster path="examples/poster" />
               <Nes path="examples/nes" />
+              <Local path="examples/local" />
             </Router>
           </React.Suspense>
         </Fragment>
