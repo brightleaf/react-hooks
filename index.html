@@ -37,6 +37,7 @@
 <li><code>useGraphQL</code> - Hook to make a GraphQL request</li>
 <li><code>useNes</code> - Hook to connect to Hapijs NES</li>
 <li><code>useWebSockets</code> - Hook to interact with WebSockets</li>
+<li><code>useLocalStorage</code> - Hook to local storage</li>
 </ul>
 <h2 id="graphql-hook">GraphQL Hook</h2>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
@@ -219,6 +220,22 @@ export default () =&gt; {
       {messageList}
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   )
+}</code></pre>
+<h2 id="local-storage-hook">Local Storage Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useLocalStorage } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [count, setCount] = useLocalStorage(<span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You clicked {count} times<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(count + 1)}&gt;
+        Click me
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
 }</code></pre>
   </div>
 <a href="https://www.github.com/brightleaf/react-hooks" class="github-corner" aria-label="Open GitHub project"><svg
