@@ -1,12 +1,12 @@
 import { useLayoutEffect } from 'react'
 
 const useClickOutside = (ref, handler = e => {}, when = true) => {
-  const handle = e => {
-    if (ref && ref.current && !ref.current.contains(e.target)) {
-      handler(e)
-    }
-  }
   useLayoutEffect(() => {
+    const handle = e => {
+      if (ref && ref.current && !ref.current.contains(e.target)) {
+        handler(e)
+      }
+    }
     if (when) {
       document.addEventListener('click', handle)
       document.addEventListener('ontouchstart', handle)
