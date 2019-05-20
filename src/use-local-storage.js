@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
-
+/**
+ * useLocalStorage - Hook to use local storage
+ *
+ * @param {string} key - The key to save the item in local storage
+ * @param {*} initialValue - The initial value
+ * @param {boolean} [raw=false] - if the object should be JSON.parsed or not
+ * @returns {Array.<{value: object , setFunction: function}>} The value and the setter function
+ */
 const useLocalStorage = (key, initialValue, raw = false) => {
   const [state, setState] = useState(() => {
     try {
