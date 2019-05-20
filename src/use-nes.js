@@ -58,6 +58,7 @@ const useNes = (url = 'ws://localhost:4567') => {
       })
     }
     connectClient()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return { ...state, client }
 }
