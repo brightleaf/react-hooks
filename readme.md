@@ -10,6 +10,7 @@ Useful React Hooks
 * `useNes` - Hook to connect to Hapijs NES
 * `useWebSockets` - Hook to interact with WebSockets
 * `useLocalStorage` - Hook to local storage
+* `useHover` - Hook for binding to hover of an element
 
 ## GraphQL Hook
 
@@ -239,6 +240,26 @@ export default () => {
       <p>You clicked {count} times</p>
       <button onClick={() => setCount(count + 1)}>
         Click me
+      </button>
+    </div>
+  );
+}
+```
+
+## Hover Hook
+
+```javascript
+import React, { useRef } from 'react'
+import { useHover } from '@brightleaf/react-hooks'
+
+export default () => {
+  const elRef = useRef(null);
+  const hovered = useHover(elRef);
+
+  return (
+    <div>
+      <div className={ hovered ? 'animated' : 'static' }>
+        Hover Over Me
       </button>
     </div>
   );
