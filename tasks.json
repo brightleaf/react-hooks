@@ -1,4 +1,5 @@
 {
   "build": "npx babel src -d lib --copy-files",
-  "build:examples": "npx webpack --config ./webpack/webpack.publish.js --mode production"
+  "build:examples": "npx webpack --config ./webpack/webpack.publish.js --mode production",
+  "test": "npx jest"
 }
