@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocalStorage } from '@brightleaf/react-hooks'
 export default () => {
-  const [count, setCount] = useLocalStorage(1)
+  const [count, setCount] = useLocalStorage('count', 1)
 
   return (
     <div className="App">
