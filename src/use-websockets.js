@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useReducer } from 'react'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -34,7 +34,7 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
   })
   const websocket = new WebSocket(url)
 
-  const connectClient = async () => {
+  const connectClient = useCallback(async () => {
     dispatch({ type: 'get' })
     websocket.onopen = () => {
       dispatch({ type: 'connected' })
@@ -49,11 +49,11 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
     }
 
     dispatch({ type: 'connecting', payload: {} })
-  }
+  }, [websocket.onclose, websocket.onmessage, websocket.onopen])
 
   useEffect(() => {
     connectClient()
-  }, [])
+  }, [connectClient])
   return { ...state }
 }
 
