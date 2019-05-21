@@ -34,7 +34,6 @@ const useLocalStorage = (key, initialValue, raw = false) => {
       // things happen, it's okay
     }
   })
-
   return [state, setState]
 }
 
