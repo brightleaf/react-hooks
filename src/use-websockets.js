@@ -34,7 +34,7 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
   })
   const websocket = new WebSocket(url)
 
-  const connectClient = useCallback(async () => {
+  const connectClient = useCallback(() => {
     dispatch({ type: 'get' })
     websocket.onopen = () => {
       dispatch({ type: 'connected' })
