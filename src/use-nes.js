@@ -28,7 +28,7 @@ const reducer = (state, action, ...other) => {
       return state
   }
 }
-const useNes = (url = 'ws://localhost:4567') => {
+const useNes = (url = 'ws://localhost:4567', subscribe = true) => {
   const [state, dispatch] = useReducer(reducer, {
     message: [],
     error: null,
@@ -55,12 +55,22 @@ const useNes = (url = 'ws://localhost:4567') => {
           dispatch({ type: 'message', payload: { data: update } })
           return resolve()
         }
+
+        if (subscribe) {
+          client.subscribe(url, update => {
+            dispatch({ type: 'message', payload: { data: update } })
+            return resolve()
+          })
+        }
       })
     }
     connectClient()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  return { ...state, client }
+  const dispatcher = message => {
+    dispatch({ type: 'message', payload: { data: message } })
+  }
+  return { ...state, client, dispatcher }
 }
 
 export { useNes }
