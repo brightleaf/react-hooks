@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useReducer } from 'react'
 import { reducer } from './reducer'
 
 const useFetch = (url, options) => {
@@ -8,15 +8,19 @@ const useFetch = (url, options) => {
     loading: true,
   })
 
-  const fetchQuery = async url => {
-    dispatch({ type: 'get' })
-    const resp = await fetch(url, options)
-    const data = await resp.json()
-    dispatch({ type: 'success', payload: { data } })
-  }
+  const fetchQuery = useCallback(
+    async url => {
+      dispatch({ type: 'get' })
+      const resp = await fetch(url, options)
+      const data = await resp.json()
+      dispatch({ type: 'success', payload: { data } })
+    },
+    [options]
+  )
+
   useEffect(() => {
     fetchQuery(url)
-  }, [url])
+  }, [fetchQuery, url])
 
   return state
 }
