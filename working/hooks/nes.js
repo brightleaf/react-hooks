@@ -3,10 +3,11 @@ import { useGet, useNes } from '@brightleaf/react-hooks'
 export default () => {
   const { getUrl } = useGet()
 
-  const { message, error, connecting, connected } = useNes(
+  const { message, error, connecting, connected, ...theRest } = useNes(
     'wss://kev-pi.herokuapp.com'
   )
 
+  console.log('The rest', theRest)
   if (error) {
     return (
       <div className="App">
