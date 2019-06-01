@@ -24,7 +24,7 @@ const reducer = (state, action) => {
   }
 }
 
-const useMutation = function(url, query, variables) {
+const useMutation = function(url, query) {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
@@ -40,5 +40,5 @@ const useMutation = function(url, query, variables) {
   return { ...state, makeQuery }
 }
 
-export { useMutation as useGraphQL }
+export { useMutation }
 export default useMutation
