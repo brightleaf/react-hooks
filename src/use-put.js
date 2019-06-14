@@ -1,32 +1,36 @@
-import { useReducer } from 'react'
-import { reducer } from './reducer'
+import useRequest from './use-request'
 
-export const usePost = (url = '') => {
-  const [state, dispatch] = useReducer(reducer, {
+const defaultConfig = {
+  mode: 'cors',
+  cache: 'no-cache',
+  credentials: 'same-origin',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  redirect: 'follow',
+  referrer: 'no-referrer',
+}
+export const usePut = (
+  url = '',
+  config = {
+    method: 'PUT',
+  }
+) => {
+  const { data, error, loading, makeRequest } = useRequest(url, {
     data: [],
     error: null,
     loading: false,
   })
-
+  const fullConfig = { ...defaultConfig, ...config }
   const postData = async data => {
-    dispatch({ type: 'get' })
-    const resp = await fetch(url, {
+    await makeRequest({
       method: 'PUT',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      redirect: 'follow',
-      referrer: 'no-referrer',
+      ...fullConfig,
       body: JSON.stringify(data),
     })
-    const result = await resp.json()
-    dispatch({ type: 'success', payload: { data: result } })
   }
 
-  return { ...state, postData }
+  return { data, error, loading, postData }
 }
 
-export default usePost
+export default usePut

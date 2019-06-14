@@ -1,27 +1,38 @@
-import { useEffect, useReducer } from 'react'
-import { reducer } from './reducer'
+import useRequest from './use-request'
 
-const useGet = url => {
-  const [state, dispatch] = useReducer(reducer, {
+const defaultConfig = {
+  mode: 'cors',
+  cache: 'no-cache',
+  credentials: 'same-origin',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  redirect: 'follow',
+  referrer: 'no-referrer',
+}
+export const useGet = (
+  url = '',
+  config = {
+    method: 'GET',
+  }
+) => {
+  const { data, error, loading, makeRequest } = useRequest(url, {
     data: [],
     error: null,
-    loading: true,
+    loading: false,
   })
-
-  const getUrl = async url => {
-    dispatch({ type: 'get' })
-    const resp = await fetch(url)
-    const data = await resp.json()
-    dispatch({ type: 'success', payload: { data } })
+  const fullConfig = { ...defaultConfig, ...config }
+  const getUrl = async (urlToGet = url) => {
+    await makeRequest(
+      {
+        method: 'GET',
+        ...fullConfig,
+      },
+      urlToGet
+    )
   }
-  useEffect(() => {
-    if (url) {
-      getUrl(url)
-    }
-  }, [url])
 
-  return { ...state, getUrl }
+  return { data, error, loading, getUrl }
 }
 
-export { useGet }
 export default useGet

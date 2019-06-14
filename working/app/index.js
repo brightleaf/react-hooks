@@ -17,7 +17,8 @@ export default class App extends Component {
       <LocationProvider history={history}>
         <Fragment>
           <React.Suspense fallback={<div>Loading</div>}>
-            <Link to="examples">Fetch</Link> | <Link to="getter">Get</Link> |{' '}
+            <Link to="examples">Fetch</Link> |{' '}
+            <Link to="examples/getter">Get</Link> |{' '}
             <Link to="examples/graph">GraphQL</Link> |{' '}
             <Link to="examples/grapher">GraphQL Vars</Link> |{' '}
             <Link to="examples/poster">Poster</Link> |{' '}

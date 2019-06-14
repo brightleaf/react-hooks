@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useGet } from '@brightleaf/react-hooks'
 export default () => {
+  console.log('GETTER')
   const [id, setId] = useState(1)
 
   const { data, error, loading, getUrl } = useGet(
     `https://swapiql.herokuapp.com/api/characters/${id}`
   )
+  console.info({ data, error, loading, getUrl })
+
   if (error) {
     return (
       <div className="App">
@@ -19,6 +22,9 @@ export default () => {
         <h1>Loading Data</h1>
       </div>
     )
+  }
+  if (data.length === 0) {
+    data.push({ name: 'Select Character' })
   }
   return (
     <div className="App">

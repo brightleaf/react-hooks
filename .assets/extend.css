@@ -5,3 +5,10 @@
 body {
   border-top: 0.8rem solid #fed001;
 }
+
+.wrap {
+  margin-bottom: 5px;
+}
+.wrap .button {
+  min-width: 60px;
+}

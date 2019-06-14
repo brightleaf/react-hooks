@@ -12,85 +12,95 @@ export default () => {
     )
   }
 
-  if (loading) {
-    return (
-      <div className="App">
-        <h1>Loading Data</h1>
-      </div>
-    )
-  }
-
   return (
     <div className="App">
       <h3>Result</h3>
       <pre>{JSON.stringify(data, null, 2)}</pre>
       <h2>Post</h2>
       <div className="select">
-        <div
-          onClick={e => {
-            console.log('click')
-            postData({
-              id: 1,
-              message: 'The message',
-            })
-          }}
-        >
-          1
+        <div className="wrap">
+          <div
+            className="button"
+            onClick={e => {
+              console.log('click')
+              postData({
+                id: 1,
+                message: 'The message from 1',
+              })
+            }}
+          >
+            1
+          </div>
         </div>
-        <div
-          onClick={e => {
-            console.log('click')
-            postData({
-              id: 2,
-              message: 'The message',
-            })
-          }}
-        >
-          2
+        <div className="wrap">
+          <div
+            className="button"
+            onClick={e => {
+              console.log('click')
+              postData({
+                id: 2,
+                message: 'The message from 2',
+              })
+            }}
+          >
+            2
+          </div>
         </div>
-        <div
-          onClick={e => {
-            console.log('click')
-            postData({
-              id: 3,
-              message: 'The message',
-            })
-          }}
-        >
-          3
+        <div className="wrap">
+          <div
+            className="button"
+            onClick={e => {
+              console.log('click')
+              postData({
+                id: 3,
+                message: 'The message from 3',
+              })
+            }}
+          >
+            3
+          </div>
         </div>
-        <div
-          onClick={e => {
-            console.log('click')
-            postData({
-              id: 4,
-              message: 'The message',
-            })
-          }}
-        >
-          4
+        <div className="wrap">
+          <div
+            className="button"
+            onClick={e => {
+              console.log('click')
+              postData({
+                id: 4,
+                message: 'The message from 4',
+              })
+            }}
+          >
+            4
+          </div>
         </div>
-        <div
-          onClick={e => {
-            console.log('click')
-            postData({
-              id: 5,
-              message: 'The message',
-            })
-          }}
-        >
-          5
+        <div className="wrap">
+          <div
+            className="button"
+            onClick={e => {
+              console.log('click')
+              postData({
+                id: 5,
+                message: 'The message from 5',
+              })
+            }}
+          >
+            5
+          </div>
         </div>
-        <div
-          onClick={e => {
-            console.log('click')
-            postData({
-              id: 6,
-              message: 'The message',
-            })
-          }}
-        >
-          6
+        <div className="wrap">
+          <div
+            className="button"
+            onClick={e => {
+              console.log('click')
+              postData({
+                id: 6,
+                message: 'The message from 6',
+              })
+            }}
+          >
+            6
+          </div>
         </div>
       </div>
     </div>
