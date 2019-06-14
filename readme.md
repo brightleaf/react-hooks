@@ -156,8 +156,6 @@ export default () => {
 
 # NES Hook
 
-
-
 Client hook for connecting to an [NES](https://github.com/hapijs/nes) instance
 
 
