@@ -5,7 +5,7 @@ export default () => {
 
   return (
     <div className="App">
-      <h1>{count} - Count </h1>
+      <h2>{count} - Count </h2>
       <button
         onClick={e => {
           setCount(count + 1)

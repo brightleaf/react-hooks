@@ -31,7 +31,7 @@ export default () => {
   }
   return (
     <main>
-      <h1>SWAPI GraphQL</h1>
+      <h2>SWAPI GraphQL</h2>
       <div>{data.person[0].name}</div>
     </main>
   )

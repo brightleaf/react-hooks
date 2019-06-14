@@ -11,7 +11,7 @@ export default () => {
   if (error) {
     return (
       <div className="App">
-        <h1>Error Getting Data</h1>
+        <h2>Error Getting Data</h2>
       </div>
     )
   }
@@ -37,7 +37,7 @@ export default () => {
   ))
   return (
     <div className="App">
-      <h1>Messages from Server</h1>
+      <h2>Messages from Server</h2>
       <div>{messages}</div>
       <div className="pad-t-md mar-t-md">
         <div

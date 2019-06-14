@@ -7,7 +7,7 @@ export default () => {
   if (error) {
     return (
       <div className="App">
-        <h1>Error Posting Data</h1>
+        <h2>Error Posting Data</h2>
       </div>
     )
   }

@@ -10,20 +10,20 @@ export default () => {
   if (error) {
     return (
       <div className="App">
-        <h1>Error Fetching Data</h1>
+        <h2>Error Fetching Data</h2>
       </div>
     )
   }
   if (loading) {
     return (
       <div className="App">
-        <h1>Loading Data</h1>
+        <h2>Loading Data</h2>
       </div>
     )
   }
   return (
     <div className="App">
-      <h1>{data[0].name}</h1>
+      <h2>{data[0].name}</h2>
       <h2>Pick a number</h2>
       <div className="select">
         <button

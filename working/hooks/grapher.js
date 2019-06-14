@@ -31,7 +31,7 @@ export default () => {
   }
   return (
     <div className="App">
-      <h1>{data.person[0].name}</h1>
+      <h2>{data.person[0].name}</h2>
       <h2>Pick a number</h2>
       <div className="select">
         <button

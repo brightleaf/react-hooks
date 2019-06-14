@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Router, createHistory, Link, LocationProvider } from '@reach/router'
 import createHashSource from 'hash-source'
+import Intro from './intro'
 const Fetch = React.lazy(() => import('../hooks/fetcher'))
 const Graph = React.lazy(() => import('../hooks/graph'))
 const Grapher = React.lazy(() => import('../hooks/grapher'))
@@ -24,6 +25,7 @@ export default class App extends Component {
             <Link to="examples/poster">Poster</Link> |{' '}
             <Link to="examples/nes">Nes</Link> |{' '}
             <Link to="examples/local">Local Storage</Link>
+            <Intro />
             <Router>
               <Fetch path="examples" />
               <Getter path="examples/getter" />
