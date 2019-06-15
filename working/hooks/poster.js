@@ -24,8 +24,9 @@ export default () => {
     <div className="App">
       <h3>Result</h3>
       <pre>{JSON.stringify(data, null, 2)}</pre>
-      <h2>Post</h2>
-      <div className="select">
+
+      <div className="container">
+        <h2>Post</h2>
         <div className="wrap">
           <div
             className="button"
