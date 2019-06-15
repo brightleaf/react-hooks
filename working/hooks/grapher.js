@@ -22,9 +22,14 @@ export default () => {
     }`,
     { id }
   )
-  console.log('data', data)
+
   if (loading) {
-    return <div>Loading Data</div>
+    return (
+      <div className="App">
+        <h2>Loading</h2>
+        <span className="loader loader-xl" />
+      </div>
+    )
   }
   if (error) {
     return <div>Error getting graphql data</div>

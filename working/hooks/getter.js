@@ -19,7 +19,8 @@ export default () => {
   if (loading) {
     return (
       <div className="App">
-        <h2>Loading Data</h2>
+        <h2>Loading</h2>
+        <span className="loader loader-xl" />
       </div>
     )
   }

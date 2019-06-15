@@ -7,7 +7,8 @@ export default () => {
     'wss://kev-pi.herokuapp.com'
   )
 
-  console.log('The rest', theRest)
+  console.info('The rest', theRest)
+
   if (error) {
     return (
       <div className="App">

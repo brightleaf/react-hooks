@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import usePost from '../../src/use-post'
 export default () => {
   const { data, error, loading, postData } = usePost(
     `https://kev-pi.herokuapp.com/api/echo`
   )
+  if (loading) {
+    return (
+      <div className="App">
+        <h2>Loading</h2>
+        <span className="loader loader-xl" />
+      </div>
+    )
+  }
   if (error) {
     return (
       <div className="App">
