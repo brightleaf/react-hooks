@@ -62,7 +62,7 @@ export default () => {
           type="button"
           className="button mar-r-sm"
           onClick={e => {
-            setId(4)
+            getUrl('https://swapiql.herokuapp.com/api/characters/4')
           }}
         >
           4
@@ -71,7 +71,7 @@ export default () => {
           type="button"
           className="button mar-r-sm"
           onClick={e => {
-            setId(5)
+            getUrl('https://swapiql.herokuapp.com/api/characters/5')
           }}
         >
           5
@@ -80,7 +80,7 @@ export default () => {
           type="button"
           className="button mar-r-sm"
           onClick={e => {
-            setId(6)
+            getUrl('https://swapiql.herokuapp.com/api/characters/6')
           }}
         >
           6
