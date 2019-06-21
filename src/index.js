@@ -1,3 +1,4 @@
+import useAsync from './use-async'
 import useClickOutside from './use-click-outside'
 import useFetch from './use-fetch'
 import useGet from './use-get'
@@ -10,6 +11,7 @@ import usePut from './use-put'
 import useWebSockets from './use-websockets'
 
 export {
+  useAsync,
   useClickOutside,
   useFetch,
   useGet,
