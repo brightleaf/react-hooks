@@ -21,6 +21,13 @@
   ],
   "homepage": "https://brightleaf.github.io/react-hooks",
   "author": "Brightleaf JS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brightleaf/react-hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brightleaf/react-hooks/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "@hapi/nes": "^11.2.0",
