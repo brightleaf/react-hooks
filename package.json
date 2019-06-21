@@ -23,8 +23,7 @@
   "author": "Brightleaf JS",
   "license": "MIT",
   "dependencies": {
-    "@hapi/nes": "^11.1.0",
-    "@testing-library/react": "^8.0.1",
+    "@hapi/nes": "^11.2.0",
     "graphql-request": "^1.8.2"
   },
   "devDependencies": {
@@ -37,10 +36,11 @@
     "@kev_nz/eslint-config": "^3.3.0",
     "@kev_nz/publisher": "^4.0.1",
     "@reach/router": "^1.2.1",
+    "@testing-library/react": "^8.0.1",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.3",
-    "css-loader": "^2.1.1",
+    "css-loader": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "hash-source": "^1.0.4",
@@ -52,13 +52,13 @@
     "mock-socket": "^8.0.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hooks-testing-library": "^0.5.0",
-    "react-hot-loader": "^4.8.8",
+    "react-hooks-testing-library": "^0.6.0",
+    "react-hot-loader": "^4.11.1",
     "react-test-renderer": "^16.8.6",
     "style-loader": "^0.23.1",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2"
   },
   "peerDependencies": {
     "react": ">= 16.8.6"
