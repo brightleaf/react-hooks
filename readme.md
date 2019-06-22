@@ -2,6 +2,7 @@
 
 Useful React Hooks
 
+* `useAsync` - Hook to an async function
 * `useFetch` - Hook to use Fetch
 * `useGet` - Hook to make a get request
 * `usePost` - Hook to make an HTTP Post
@@ -11,6 +12,30 @@ Useful React Hooks
 * `useWebSockets` - Hook to interact with WebSockets
 * `useLocalStorage` - Hook to local storage
 * `useHover` - Hook for binding to hover of an element
+* `useEventListener` - Hook for binding to an hander to DOM event
+* `useFavicon` - Hook to set a favicon
+* `useTitle` - Hook to manipulate the page title
+
+## Async Hook
+
+```jsx
+import React, { useEffect } from 'react'
+import { useAsync } from '@brightleaf/react-hooks'
+
+export default () => {
+  const { loading, error, data, execute } = useAsync(asyncFunction)
+  useEffect(() => {
+    execute()
+  }, [])
+  if (loading) {
+    return <div>Executing Async Function</div>
+  }
+  if (error) {
+    return <div>Error executing async function</div>
+  }
+  return <div>{data}</div>
+}
+```
 
 ## GraphQL Hook
 
@@ -154,6 +179,18 @@ export default () => {
 }
 ```
 
+## Title Hook
+
+```jsx
+import React, { useEffect } from 'react'
+import { useTitle } from '@brightleaf/react-hooks'
+
+export default () => {
+  useTitle('Brightleaf JS Hooks')
+
+  return <div>The Page</div>
+}
+```
 # NES Hook
 
 Client hook for connecting to an [NES](https://github.com/hapijs/nes) instance
