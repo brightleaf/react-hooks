@@ -20,6 +20,17 @@ module.exports = {
         test: /\.s[ca]ss$/,
         loader: 'style-loader!css-loader!resolve-url-loader!sass-loader',
       },
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'markdown-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
