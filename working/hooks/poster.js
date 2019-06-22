@@ -7,7 +7,7 @@ export default () => {
   )
   if (loading) {
     return (
-      <div className="App">
+      <div className="App content">
         <h2>Loading</h2>
         <span className="loader loader-xl" />
       </div>
@@ -15,14 +15,14 @@ export default () => {
   }
   if (error) {
     return (
-      <div className="App">
+      <div className="App content">
         <h2>Error Posting Data</h2>
       </div>
     )
   }
 
   return (
-    <div className="App">
+    <div className="App content">
       <h3>Result</h3>
       <pre>{JSON.stringify(data, null, 2)}</pre>
 

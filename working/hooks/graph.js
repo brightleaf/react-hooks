@@ -35,9 +35,9 @@ export default () => {
     return <div>error</div>
   }
   return (
-    <main>
+    <div className="content">
       <h2>SWAPI GraphQL</h2>
       <div>{data.person[0].name}</div>
-    </main>
+    </div>
   )
 }

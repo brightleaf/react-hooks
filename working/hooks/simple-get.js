@@ -8,30 +8,34 @@ export default () => {
   )
   if (error) {
     return (
-      <div className="App">
+      <div className="App content">
         <h2>Error Getting Data</h2>
       </div>
     )
   }
   if (loading) {
     return (
-      <div className="App">
+      <div className="App content">
         <h2>Loading Data</h2>
       </div>
     )
   }
   return (
-    <div className="App">
+    <div className="App content">
       <h2>{data[0].name}</h2>
       <h2>Pick a number</h2>
-      <div className="select">
-        <div
-          onClick={e => {
-            setId(2)
-          }}
-        >
-          2
-        </div>
+      <div className="field is-grouped">
+        <p className="control">
+          <a
+            className="button"
+            onClick={e => {
+              e.preventDefault()
+              setId(2)
+            }}
+          >
+            2
+          </a>
+        </p>
       </div>
     </div>
   )

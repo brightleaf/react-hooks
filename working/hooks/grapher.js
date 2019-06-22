@@ -36,64 +36,76 @@ export default () => {
     return <div>Error getting graphql data</div>
   }
   return (
-    <div className="App">
+    <div className="App content">
       <h2>{data.person[0].name}</h2>
-      <h2>Pick a number</h2>
-      <div className="select">
-        <button
-          className="button mar-r-sm"
-          onClick={e => {
-            setId(1)
-          }}
-        >
-          1
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            setId(2)
-          }}
-        >
-          2
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            setId(3)
-          }}
-        >
-          3
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            console.log('click')
-            setId(4)
-          }}
-        >
-          4
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            setId(5)
-          }}
-        >
-          5
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            setId(6)
-          }}
-        >
-          6
-        </button>
+      <h3>Pick a number</h3>
+      <div className="field is-grouped">
+        <p className="control">
+          <button
+            className="button mar-r-sm"
+            onClick={e => {
+              setId(1)
+            }}
+          >
+            1
+          </button>
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button mar-r-sm"
+            onClick={e => {
+              setId(2)
+            }}
+          >
+            2
+          </button>{' '}
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button mar-r-sm"
+            onClick={e => {
+              setId(3)
+            }}
+          >
+            3
+          </button>{' '}
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button mar-r-sm"
+            onClick={e => {
+              console.log('click')
+              setId(4)
+            }}
+          >
+            4
+          </button>{' '}
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button mar-r-sm"
+            onClick={e => {
+              setId(5)
+            }}
+          >
+            5
+          </button>{' '}
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button mar-r-sm"
+            onClick={e => {
+              setId(6)
+            }}
+          >
+            6
+          </button>
+        </p>
       </div>
     </div>
   )

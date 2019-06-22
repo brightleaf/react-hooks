@@ -38,7 +38,7 @@ export default () => {
     </div>
   ))
   return (
-    <div className="App">
+    <div className="App content">
       <h2>Messages from Server</h2>
       <div>{messages}</div>
       <div className="pad-t-md mar-t-md">

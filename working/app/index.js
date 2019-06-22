@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Router, createHistory, Link, LocationProvider } from '@reach/router'
 import createHashSource from 'hash-source'
 import Intro from './intro'
+import Home from './home'
 const Fetch = React.lazy(() => import('../hooks/fetcher'))
 const Graph = React.lazy(() => import('../hooks/graph'))
 const Grapher = React.lazy(() => import('../hooks/grapher'))
@@ -18,7 +19,7 @@ export default class App extends Component {
       <LocationProvider history={history}>
         <Fragment>
           <React.Suspense fallback={<div>Loading</div>}>
-            <Link to="examples">Fetch</Link> |{' '}
+            <Link to="/">Home</Link> | <Link to="examples">Fetch</Link> |{' '}
             <Link to="examples/getter">Get</Link> |{' '}
             <Link to="examples/graph">GraphQL</Link> |{' '}
             <Link to="examples/grapher">GraphQL Vars</Link> |{' '}
@@ -27,6 +28,7 @@ export default class App extends Component {
             <Link to="examples/local">Local Storage</Link>
             <Intro />
             <Router>
+              <Home path="/" />
               <Fetch path="examples" />
               <Getter path="examples/getter" />
               <Graph path="examples/graph" />

@@ -16,8 +16,8 @@ export default () => {
   return (
     <Form
       name="testForm"
-      onSubmit={data => {
-        postData(data)
+      onSubmit={formData => {
+        postData(formData)
       }}
     >
       <TextBox label="My Label" name="myTextBox" />

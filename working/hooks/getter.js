@@ -29,64 +29,76 @@ export default () => {
     data.push({ name: 'Select Character' })
   }
   return (
-    <div className="App">
+    <div className="App content">
       <h2>{data[0].name}</h2>
-      <h2>Pick a number</h2>
-      <div className="select">
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            getUrl('https://swapiql.herokuapp.com/api/characters/1')
-          }}
-        >
-          1
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            getUrl('https://swapiql.herokuapp.com/api/characters/2')
-          }}
-        >
-          2
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            getUrl('https://swapiql.herokuapp.com/api/characters/3')
-          }}
-        >
-          3
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            getUrl('https://swapiql.herokuapp.com/api/characters/4')
-          }}
-        >
-          4
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            getUrl('https://swapiql.herokuapp.com/api/characters/5')
-          }}
-        >
-          5
-        </button>
-        <button
-          type="button"
-          className="button mar-r-sm"
-          onClick={e => {
-            getUrl('https://swapiql.herokuapp.com/api/characters/6')
-          }}
-        >
-          6
-        </button>
+      <h3>Pick a number</h3>
+      <div className="field is-grouped">
+        <p className="control">
+          <button
+            type="button"
+            className="button"
+            onClick={e => {
+              getUrl('https://swapiql.herokuapp.com/api/characters/1')
+            }}
+          >
+            1
+          </button>
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button"
+            onClick={e => {
+              getUrl('https://swapiql.herokuapp.com/api/characters/2')
+            }}
+          >
+            2
+          </button>
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button"
+            onClick={e => {
+              getUrl('https://swapiql.herokuapp.com/api/characters/3')
+            }}
+          >
+            3
+          </button>
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button"
+            onClick={e => {
+              getUrl('https://swapiql.herokuapp.com/api/characters/4')
+            }}
+          >
+            4
+          </button>
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button"
+            onClick={e => {
+              getUrl('https://swapiql.herokuapp.com/api/characters/5')
+            }}
+          >
+            5
+          </button>
+        </p>
+        <p className="control">
+          <button
+            type="button"
+            className="button"
+            onClick={e => {
+              getUrl('https://swapiql.herokuapp.com/api/characters/6')
+            }}
+          >
+            6
+          </button>
+        </p>
       </div>
     </div>
   )

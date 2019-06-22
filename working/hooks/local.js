@@ -5,22 +5,30 @@ export default () => {
   const [count, setCount] = useLocalStorage('count', 1)
 
   return (
-    <div className="App">
+    <div className="App content">
       <h2>{count} - Count </h2>
-      <button
-        onClick={e => {
-          setCount(count + 1)
-        }}
-      >
-        + Add
-      </button>{' '}
-      <button
-        onClick={e => {
-          setCount(count - 1)
-        }}
-      >
-        - Subtract
-      </button>
+      <div className="field is-grouped">
+        <p className="control">
+          <button
+            className="button"
+            onClick={e => {
+              setCount(count + 1)
+            }}
+          >
+            + Add
+          </button>{' '}
+        </p>
+        <p className="control">
+          <button
+            className="button"
+            onClick={e => {
+              setCount(count - 1)
+            }}
+          >
+            - Subtract
+          </button>
+        </p>
+      </div>
     </div>
   )
 }
