@@ -1,12 +1,15 @@
 {
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#61dafb",
-    "titleBar.inactiveBackground": "#61dafbcc",
-    "titleBar.border": "#33373f",
+    "titleBar.activeBackground": "#fed001",
+    "titleBar.inactiveBackground": "#fed001cc",
+    "titleBar.border": "#61dafb",
     "activityBar.foreground": "#282c34",
-    "activityBar.background": "#61dafb",
+    "activityBar.background": "#fed001",
     "tab.activeBorder": "#61dafb",
-    "titleBar.activeForeground": "#34495e"
+    "titleBar.activeForeground": "#000000",
+    "statusBar.background": "#fed001",
+    "statusBar.border": "#61dafb",
+    "statusBar.foreground": "#000000"
   },
   "files.autoSaveDelay": 800,
   "eslint.autoFixOnSave": true,
