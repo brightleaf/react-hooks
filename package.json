@@ -31,7 +31,8 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/nes": "^11.2.0",
-    "graphql-request": "^1.8.2"
+    "graphql-request": "^1.8.2",
+    "highlight.js": "^9.15.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

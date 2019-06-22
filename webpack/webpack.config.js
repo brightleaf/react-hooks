@@ -27,6 +27,11 @@ module.exports = {
           },
           {
             loader: 'markdown-loader',
+            options: {
+              highlight: function(code) {
+                return require('highlight.js').highlightAuto(code).value
+              },
+            },
           },
         ],
       },
