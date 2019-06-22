@@ -16,6 +16,7 @@ const Getter = React.lazy(() => import('../hooks/getter'))
 const Poster = React.lazy(() => import('../hooks/poster'))
 const Nes = React.lazy(() => import('../hooks/nes'))
 const Local = React.lazy(() => import('../hooks/local'))
+const Keypress = React.lazy(() => import('../hooks/keypress'))
 const source = createHashSource()
 const history = createHistory(source)
 
@@ -60,6 +61,7 @@ export default class App extends Component {
                 <TabLink to="/examples/poster">Poster</TabLink>
                 <TabLink to="/examples/nes">Nes</TabLink>
                 <TabLink to="/examples/local">Local Storage</TabLink>
+                <TabLink to="/examples/keypress">Key Press</TabLink>
               </ul>
             </div>
             <Intro />
@@ -72,6 +74,7 @@ export default class App extends Component {
               <Poster path="/examples/poster" />
               <Nes path="/examples/nes" />
               <Local path="/examples/local" />
+              <Keypress path="/examples/keypress" />
             </Router>
           </React.Suspense>
         </Fragment>
