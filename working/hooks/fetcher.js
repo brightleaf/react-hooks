@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useFetch } from '@brightleaf/react-hooks'
+import { useFetch, useTitle } from '@brightleaf/react-hooks'
 export default () => {
+  useTitle('useFetch example from @brightleaf/react-hooks')
   const [id, setId] = useState(1)
 
   const { data, error, loading } = useFetch(

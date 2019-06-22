@@ -1,6 +1,7 @@
 import React from 'react'
-import { useLocalStorage } from '@brightleaf/react-hooks'
+import { useLocalStorage, useTitle } from '@brightleaf/react-hooks'
 export default () => {
+  useTitle('useLocalStorage example from @brightleaf/react-hooks')
   const [count, setCount] = useLocalStorage('count', 1)
 
   return (

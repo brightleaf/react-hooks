@@ -1,6 +1,7 @@
 import React from 'react'
-import { useGet, useNes } from '@brightleaf/react-hooks'
+import { useGet, useNes, useTitle } from '@brightleaf/react-hooks'
 export default () => {
+  useTitle('useNes example from @brightleaf/react-hooks')
   const { getUrl } = useGet()
 
   const { message, error, connecting, connected, ...theRest } = useNes(

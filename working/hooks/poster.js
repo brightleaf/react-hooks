@@ -1,6 +1,7 @@
 import React from 'react'
-import usePost from '../../src/use-post'
+import { usePost, useTitle } from '@brightleaf/react-hooks'
 export default () => {
+  useTitle('usePost example from @brightleaf/react-hooks')
   const { data, error, loading, postData } = usePost(
     `https://kev-pi.herokuapp.com/api/echo`
   )

@@ -1,8 +1,8 @@
 import React from 'react'
-import useQuery from '../../src/use-graphql'
+import { useGraphQL, useTitle } from '@brightleaf/react-hooks'
 export default () => {
-  console.info('fetch', useQuery)
-  const { data, loading, error } = useQuery(
+  useTitle('useGraphQL example from @brightleaf/react-hooks')
+  const { data, loading, error } = useGraphQL(
     'https://swapiql.herokuapp.com/graphql',
     `{
       person(id: 1) {

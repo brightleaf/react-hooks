@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useGet } from '@brightleaf/react-hooks'
+import { useGet, useTitle, useFavicon } from '@brightleaf/react-hooks'
 export default () => {
-  console.log('GETTER')
+  useTitle('useGet example from @brightleaf/react-hooks')
+  useFavicon('https://brightleaf.github.io/react-hooks/brightleaf.ico')
   const [id, setId] = useState(1)
 
   const { data, error, loading, getUrl } = useGet(
