@@ -30,6 +30,7 @@
   <h1 id="brightleaf-react-hooks">Brightleaf React Hooks</h1>
 <p>Useful React Hooks</p>
 <ul>
+<li><code>useAsync</code> - Hook to an async function</li>
 <li><code>useFetch</code> - Hook to use Fetch</li>
 <li><code>useGet</code> - Hook to make a get request</li>
 <li><code>usePost</code> - Hook to make an HTTP Post</li>
@@ -39,7 +40,27 @@
 <li><code>useWebSockets</code> - Hook to interact with WebSockets</li>
 <li><code>useLocalStorage</code> - Hook to local storage</li>
 <li><code>useHover</code> - Hook for binding to hover of an element</li>
+<li><code>useEventListener</code> - Hook for binding to an hander to DOM event</li>
+<li><code>useFavicon</code> - Hook to set a favicon</li>
+<li><code>useTitle</code> - Hook to manipulate the page title</li>
 </ul>
+<h2 id="async-hook">Async Hook</h2>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React, { useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useAsync } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { loading, error, data, execute } = useAsync(asyncFunction)
+  useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    execute()
+  }, [])
+  <span class="hljs-keyword">if</span> (loading) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Executing Async Function<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  }
+  <span class="hljs-keyword">if</span> (error) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Error executing async function<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  }
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{data}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+}</code></pre>
 <h2 id="graphql-hook">GraphQL Hook</h2>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
 <span class="hljs-keyword">import</span> { useGraphQL } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
@@ -164,6 +185,15 @@
       ... // rest of page
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   )
+}</code></pre>
+<h2 id="title-hook">Title Hook</h2>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React, { useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useTitle } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  useTitle(<span class="hljs-string">'Brightleaf JS Hooks'</span>)
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>The Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 }</code></pre>
 <h1 id="nes-hook">NES Hook</h1>
 <p>Client hook for connecting to an <a href="https://github.com/hapijs/nes">NES</a> instance</p>
