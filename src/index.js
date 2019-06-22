@@ -1,5 +1,7 @@
 import useAsync from './use-async'
 import useClickOutside from './use-click-outside'
+import useEvent from './use-event'
+import useEventListener from './use-event-listener'
 import useFavicon from './use-favicon'
 import useFetch from './use-fetch'
 import useGet from './use-get'
@@ -15,6 +17,8 @@ import useWebSockets from './use-websockets'
 export {
   useAsync,
   useClickOutside,
+  useEvent,
+  useEventListener,
   useFavicon,
   useFetch,
   useGet,
