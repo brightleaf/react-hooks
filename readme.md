@@ -17,6 +17,8 @@ Useful React Hooks
 * `useFavicon` - Hook to set a favicon
 * `useTitle` - Hook to manipulate the page title
 
+[Examples](https://brightleaf.github.io/react-hooks/examples/#/)
+
 ## Async Hook
 
 ```jsx
