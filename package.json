@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server --config ./webpack/webpack.config.js --mode development",
-    "preversion": "npx isom build",
+    "preversion": "npx isom build && npx isom build:examples",
     "postversion": "npm publish --access=public",
     "postpublish": "git push origin --all --follow-tags && npx publisher"
   },
