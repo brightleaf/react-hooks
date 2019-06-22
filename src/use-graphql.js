@@ -5,6 +5,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'get':
       return { ...state, loading: true }
+    case 'loading':
+      return { ...state, loading: true }
     case 'success':
       return {
         ...state,
@@ -39,23 +41,25 @@ const reducer = (state, action) => {
  * @param {object} variables - The variables object to be used with query
  * @returns {...GraphQL~State} - The states and results and the call to make the request
  */
-const useGraphQL = function(url, query, variables) {
+const useGraphQL = function(url, query, variables = {}) {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
     loading: true,
   })
   const fetchQuery = async variables => {
-    dispatch({ type: 'get' })
+    dispatch({ type: 'loading' })
     const resp = await request(url, query, variables)
     const data = resp
     dispatch({ type: 'success', payload: { data } })
   }
+
   const holder = Object.keys(variables).map(key => variables[key])
 
   useEffect(() => {
     fetchQuery(variables)
-  }, [fetchQuery, variables])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, holder)
   return { ...state }
 }
 
