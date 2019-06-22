@@ -24,6 +24,21 @@ const reducer = (state, action) => {
   }
 }
 
+/**
+ * @typedef {Object} GraphQL~State
+ * @property {Object|array} data - The data returned from the function.
+ * @property {boolean} error - Indicates whether the function had an error.
+ * @property {boolean} loading - Indicates whether the function is executing
+ */
+
+/**
+ * useGet hook to handle fetching data from a url
+ *
+ * @param {string} url - The url to be used
+ * @param {string|object} query - The query to make
+ * @param {object} variables - The variables object to be used with query
+ * @returns {...GraphQL~State} - The states and results and the call to make the request
+ */
 const useGraphQL = function(url, query, variables) {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
@@ -40,7 +55,7 @@ const useGraphQL = function(url, query, variables) {
 
   useEffect(() => {
     fetchQuery(variables)
-  }, holder)
+  }, [fetchQuery, variables])
   return { ...state }
 }
 
