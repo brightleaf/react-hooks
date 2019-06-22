@@ -198,31 +198,31 @@
 <h1 id="nes-hook">NES Hook</h1>
 <p>Client hook for connecting to an <a href="https://github.com/hapijs/nes">NES</a> instance</p>
 <h3 id="messages">Messages</h3>
-<pre><code class="hljs javascript language-javascript">import React from 'react'
-import { useNes } from '@brightleaf/react-hooks'
-export default () =&gt; {
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useNes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
 
-  const { message, error, connecting, connected } = useNes(
-    'wss://kev-pi.herokuapp.com'
+  <span class="hljs-keyword">const</span> { message, error, connecting, connected } = useNes(
+    <span class="hljs-string">'wss://kev-pi.herokuapp.com'</span>
   )
 
-  if (error) {
-    return &lt;div&gt;&lt;h1&gt;Error&lt;/h1&gt;&lt;/div&gt;
+  <span class="hljs-keyword">if</span> (error) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Error<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   }
-  const connectMessage = connecting ? &lt;div&gt;Connecting&lt;/div&gt; : &lt;div&gt;Not Connecting&lt;/div&gt;
-  const connectedMessage = connected ? &lt;div&gt;Connected&lt;/div&gt; : &lt;div&gt;Not Connected&lt;/div&gt;
+  <span class="hljs-keyword">const</span> connectMessage = connecting ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Connecting<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> : <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Not Connecting<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  <span class="hljs-keyword">const</span> connectedMessage = connected ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Connected<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> : <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Not Connected<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 
-  const messages = message.map((m, index) =&gt; &lt;div key={`key-${index}`}&gt;{m}&lt;/div&gt;)
-  return (
-    &lt;div className="App"&gt;
-      &lt;h1&gt;Messages from Server&lt;/h1&gt;
-      &lt;div&gt;{messages}&lt;/div&gt;
-      &lt;div&gt;
-        &lt;b&gt;Status Messages&lt;/b&gt;
+  <span class="hljs-keyword">const</span> messages = message.map(<span class="hljs-function">(<span class="hljs-params">m, index</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">key-</span>${<span class="hljs-attr">index</span>}`}&gt;</span>{m}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>)
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Messages from Server<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{messages}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Status Messages<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
         {connectMessage}
         {connectedMessage}
-      &lt;/div&gt;
-    &lt;/div&gt;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   )
 }</code></pre>
 <h3 id="subscriptions">Subscriptions</h3>
