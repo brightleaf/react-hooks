@@ -12,6 +12,8 @@ import useMutation from './use-mutation'
 import useNes from './use-nes'
 import usePost from './use-post'
 import usePut from './use-put'
+import useStyles from './use-styles'
+import useStyleSheet from './use-stylesheet'
 import useTitle from './use-title'
 import useWebSockets from './use-websockets'
 
@@ -30,6 +32,8 @@ export {
   useNes,
   usePost,
   usePut,
+  useStyles,
+  useStyleSheet,
   useTitle,
   useWebSockets,
 }
