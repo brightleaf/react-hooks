@@ -16,6 +16,8 @@ Useful React Hooks
 * `useEventListener` - Hook for binding to an hander to DOM event
 * `useFavicon` - Hook to set a favicon
 * `useTitle` - Hook to manipulate the page title
+* `useStyles` - Hook to add CSS to the page
+* `useStyleSheet` - Hook to add a css file to the page
 
 [Examples](https://brightleaf.github.io/react-hooks/examples/#/)
 
@@ -319,7 +321,55 @@ export default () => {
     <div>
       <div className={ hovered ? 'animated' : 'static' }>
         Hover Over Me
-      </button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Style Hook
+
+```javascript
+import React from 'react'
+import { useStyles } from '@brightleaf/react-hooks'
+
+export default () => {
+   useStyles(`
+    html,
+    body {
+        font-family: 'Open Sans';
+    }
+    div {
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+  `)
+
+  return (
+    <div>
+      <div>
+        Something
+      </div>
+    </div>
+  );
+}
+```
+
+## StyleSheet Hook
+
+```javascript
+import React from 'react'
+import { useStyleSheet } from '@brightleaf/react-hooks'
+
+export default () => {
+  useStyleSheet(
+    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+  )
+  useStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans')
+
+  return (
+    <div>
+      ...
     </div>
   );
 }
