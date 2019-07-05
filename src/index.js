@@ -12,6 +12,7 @@ import useMutation from './use-mutation'
 import useNes from './use-nes'
 import usePost from './use-post'
 import usePut from './use-put'
+import useScript from './use-script'
 import useStyles from './use-styles'
 import useStyleSheet from './use-stylesheet'
 import useTitle from './use-title'
@@ -32,6 +33,7 @@ export {
   useNes,
   usePost,
   usePut,
+  useScript,
   useStyles,
   useStyleSheet,
   useTitle,
