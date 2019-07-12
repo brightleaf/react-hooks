@@ -7,7 +7,7 @@
   ],
   "main": "./lib/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest ./src",
     "dev": "webpack-dev-server --config ./webpack/webpack.config.js --mode development",
     "preversion": "npx isom build && npx isom build:examples",
     "postversion": "npm publish --access=public",
@@ -31,8 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/nes": "^11.2.0",
-    "graphql-request": "^1.8.2",
-    "highlight.js": "^9.15.8"
+    "graphql-request": "^1.8.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -41,10 +40,12 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@kev_nz/async-tools": "^1.2.1",
     "@kev_nz/eslint-config": "^3.3.0",
     "@kev_nz/publisher": "^4.0.1",
     "@reach/router": "^1.2.1",
     "@testing-library/react": "^8.0.1",
+    "@testing-library/react-hooks": "^1.1.0",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.3",
@@ -62,7 +63,6 @@
     "mock-socket": "^8.0.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hooks-testing-library": "^0.6.0",
     "react-hot-loader": "^4.11.1",
     "react-test-renderer": "^16.8.6",
     "style-loader": "^0.23.1",
