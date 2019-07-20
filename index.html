@@ -30,23 +30,25 @@
   <h1 id="brightleaf-react-hooks">Brightleaf React Hooks</h1>
 <p>Useful React Hooks</p>
 <ul>
-<li><code>useAsync</code> - Hook to an async function</li>
-<li><code>useFetch</code> - Hook to use Fetch</li>
-<li><code>useGet</code> - Hook to make a get request</li>
-<li><code>usePost</code> - Hook to make an HTTP Post</li>
-<li><code>useClickOutside</code> - Hook to handle a click outside an element</li>
-<li><code>useGraphQL</code> - Hook to make a GraphQL request</li>
-<li><code>useKeypress</code> - Hook to Keypress</li>
-<li><code>useNes</code> - Hook to connect to Hapijs NES</li>
-<li><code>useWebSockets</code> - Hook to interact with WebSockets</li>
-<li><code>useLocalStorage</code> - Hook to local storage</li>
-<li><code>useHover</code> - Hook for binding to hover of an element</li>
-<li><code>useEventListener</code> - Hook for binding to an hander to DOM event</li>
-<li><code>useFavicon</code> - Hook to set a favicon</li>
-<li><code>useTitle</code> - Hook to manipulate the page title</li>
-<li><code>useStyles</code> - Hook to add CSS to the page</li>
-<li><code>useStyleSheet</code> - Hook to add a css file to the page</li>
-<li><code>usePageVisibility</code> - Hook to use the page visibility api</li>
+<li><a href="#async-hook"><code>useAsync</code></a> - Hook to an async function</li>
+<li><a href="#fetch-hook"><code>useFetch</code></a> - Hook to use Fetch</li>
+<li><a href="#get-hook"><code>useGet</code></a> - Hook to make a get request</li>
+<li><a href="#post-hook"><code>usePost</code></a> - Hook to make an HTTP Post</li>
+<li><a href="#click-outside-hook"><code>useClickOutside</code></a> - Hook to handle a click outside an element</li>
+<li><a href="#graphql-hook"><code>useGraphQL</code></a> - Hook to make a GraphQL request</li>
+<li><a href="#keypress-hook"><code>useKeypress</code></a> - Hook to Keypress</li>
+<li><a href="#nes-hook"><code>useNes</code></a> - Hook to connect to Hapijs NES</li>
+<li><a href="#nes-hook"><code>useWebSockets</code></a> - Hook to interact with WebSockets</li>
+<li><a href="#local-storage-hook"><code>useLocalStorage</code></a> - Hook to local storage</li>
+<li><a href="#hover-hook"><code>useHover</code></a> - Hook for binding to hover of an element</li>
+<li><a href="#event-hook"><code>useEventListener</code></a> - Hook for binding to an hander to DOM event</li>
+<li><a href="#favicon-hook"><code>useFavicon</code></a> - Hook to set a favicon</li>
+<li><a href="#title-hook"><code>useTitle</code></a> - Hook to manipulate the page title</li>
+<li><a href="#script-hook"><code>useScript</code></a> - Hook to add JavaScript to the page</li>
+<li><a href="#style-hook"><code>useStyles</code></a> - Hook to add CSS to the page</li>
+<li><a href="#stylesheet-hook"><code>useStyleSheet</code></a> - Hook to add a css file to the page</li>
+<li><a href="#pagevisibility-hook"><code>usePageVisibility</code></a> - Hook to use the page visibility api</li>
+<li><a href="#onlinestatus-hook"><code>useOnlineStatus</code></a> - Hook to use the online status api</li>
 </ul>
 <p><a href="https://brightleaf.github.io/react-hooks/examples/#/">Examples</a></p>
 <h2 id="async-hook">Async Hook</h2>
@@ -65,6 +67,35 @@
     <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Error executing async function<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   }
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{data}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+}</code></pre>
+<h2 id="fetch-hook">Fetch Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useFetch } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [id, setId] = useState(<span class="hljs-number">1</span>)
+
+  <span class="hljs-keyword">const</span> { data, error, loading } = useFetch(
+    <span class="hljs-string">`https://swapiql.herokuapp.com/api/characters/<span class="hljs-subst">${id}</span>`</span>
+  )
+  <span class="hljs-keyword">if</span> (error) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Error Getting Data<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+  <span class="hljs-keyword">if</span> (loading) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Loading Data<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+  }
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{data[0].name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
 }</code></pre>
 <h2 id="graphql-hook">GraphQL Hook</h2>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
@@ -346,6 +377,19 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   );
 }</code></pre>
+<h2 id="script-hook">Script Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useScript } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  useScript(<span class="hljs-string">'/js/script.js'</span>)
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}</code></pre>
 <h2 id="pagevisibility-hook">PageVisibility Hook</h2>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
 <span class="hljs-keyword">import</span> { usePageVisibility } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
@@ -358,6 +402,75 @@
       ...
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   );
+}</code></pre>
+<h2 id="favicon-hook">Favicon Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useFavicon } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> { favicon, setFavicon } = useFavicon(<span class="hljs-string">'brightleaf.png'</span>)
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{e</span> =&gt;</span> {
+        e.preventDefault()
+        setFavicon('brightleaf-1.png')
+      }}&gt;Change Favicon<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}</code></pre>
+<h2 id="onlinestatus-hook">OnlineStatus Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useOnlineStatus } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { offline, online } = useOnlineStatus()
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>
+        {offline &amp;&amp; 'Connection is offline'}
+        {online &amp;&amp; 'Connection is online'}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      {offline &amp;&amp; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"message is-danger"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"message-body"</span>&gt;</span>Connection is offline <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+      )}
+      {online &amp;&amp; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"message is-success"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"message-body"</span>&gt;</span>Connection is online <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+      )}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}</code></pre>
+<h2 id="event-hook">Event Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React , { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useEventListener } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [state, setState] = useState(<span class="hljs-built_in">window</span>.scrollY)
+  <span class="hljs-keyword">const</span> onScroll = <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {
+    setState(<span class="hljs-built_in">window</span>.scrollY)
+  }
+  useEventListener(<span class="hljs-string">'scroll'</span>, onScroll)
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Scroll the page<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+        <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span>
+          <span class="hljs-attr">position:</span> '<span class="hljs-attr">fixed</span>',
+          <span class="hljs-attr">top:</span> <span class="hljs-attr">10</span>,
+          <span class="hljs-attr">left:</span> <span class="hljs-attr">10</span>,
+          <span class="hljs-attr">background:</span> '#<span class="hljs-attr">CCCCCC</span>',
+        }}
+      &gt;</span>
+        {state} scroll position
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Home</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Home</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
 }</code></pre>
   </div>
 <a href="https://www.github.com/brightleaf/react-hooks" class="github-corner" aria-label="Open GitHub project"><svg
