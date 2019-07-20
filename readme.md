@@ -2,7 +2,7 @@
 
 Useful React Hooks
 
-* `useAsync` - Hook to an async function
+* [`useAsync`](#async-hook) - Hook to an async function
 * `useFetch` - Hook to use Fetch
 * `useGet` - Hook to make a get request
 * `usePost` - Hook to make an HTTP Post
@@ -19,6 +19,7 @@ Useful React Hooks
 * `useStyles` - Hook to add CSS to the page
 * `useStyleSheet` - Hook to add a css file to the page
 * `usePageVisibility` - Hook to use the page visibility api
+* `useOnlineStatus` - Hook to use the online status api
 
 [Examples](https://brightleaf.github.io/react-hooks/examples/#/)
 
@@ -390,5 +391,55 @@ export default () => {
       ...
     </div>
   );
+}
+```
+
+## Favicon Hook
+
+```javascript
+import React from 'react'
+import { useFavicon } from '@brightleaf/react-hooks'
+
+export default () => {
+
+  const { favicon, setFavicon } = useFavicon('brightleaf.png')
+
+  return (
+    <div>
+      <button onClick={e => {
+        e.preventDefault()
+        setFavicon('brightleaf-1.png')
+      }}>Change Favicon</button>
+    </div>
+  );
+}
+```
+
+## OnlineStatus Hook
+
+```javascript
+import React from 'react'
+import { useOnlineStatus } from '@brightleaf/react-hooks'
+
+export default () => {
+  const { offline, online } = useOnlineStatus()
+  return (
+    <div>
+      <h3>
+        {offline && 'Connection is offline'}
+        {online && 'Connection is online'}
+      </h3>
+      {offline && (
+        <article className="message is-danger">
+          <div className="message-body">Connection is offline </div>
+        </article>
+      )}
+      {online && (
+        <article className="message is-success">
+          <div className="message-body">Connection is online </div>
+        </article>
+      )}
+    </div>
+  )
 }
 ```
