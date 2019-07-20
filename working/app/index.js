@@ -19,11 +19,11 @@ const Local = React.lazy(() => import('../hooks/local'))
 const Keypress = React.lazy(() => import('../hooks/keypress'))
 const PageViz = React.lazy(() => import('../hooks/page-visibility'))
 const OnlineStatus = React.lazy(() => import('../hooks/online-status'))
+const EventExample = React.lazy(() => import('../hooks/event-example'))
 const source = createHashSource()
 const history = createHistory(source)
 
 const TabLink = props => {
-  console.log('TabLink', props)
   return (
     <Location>
       {({ location }) => {
@@ -33,7 +33,6 @@ const TabLink = props => {
             <Link
               {...props}
               getProps={prop => {
-                console.info('link prop', prop)
                 const { isCurrent } = prop
                 return {
                   className: isCurrent ? 'is-active' : '',
@@ -68,11 +67,13 @@ export default class App extends Component {
                   Page Visibility
                 </TabLink>
                 <TabLink to="/examples/online-status">Online status</TabLink>
+                <TabLink to="/examples/events">Events</TabLink>
               </ul>
             </div>
             <Intro />
             <Router>
               <Home path="/" />
+              <Home path="*" />
               <Fetch path="/examples" />
               <Getter path="/examples/getter" />
               <Graph path="/examples/graph" />
@@ -83,6 +84,7 @@ export default class App extends Component {
               <Keypress path="/examples/keypress" />
               <PageViz path="/examples/page-visibility" />
               <OnlineStatus path="/examples/online-status" />
+              <EventExample path="/examples/events" />
             </Router>
           </React.Suspense>
         </Fragment>
