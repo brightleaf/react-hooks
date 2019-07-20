@@ -46,6 +46,7 @@
 <li><code>useTitle</code> - Hook to manipulate the page title</li>
 <li><code>useStyles</code> - Hook to add CSS to the page</li>
 <li><code>useStyleSheet</code> - Hook to add a css file to the page</li>
+<li><code>usePageVisibility</code> - Hook to use the page visibility api</li>
 </ul>
 <p><a href="https://brightleaf.github.io/react-hooks/examples/#/">Examples</a></p>
 <h2 id="async-hook">Async Hook</h2>
@@ -338,6 +339,19 @@
     <span class="hljs-string">'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'</span>
   )
   useStyleSheet(<span class="hljs-string">'https://fonts.googleapis.com/css?family=Open+Sans'</span>)
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}</code></pre>
+<h2 id="pagevisibility-hook">PageVisibility Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { usePageVisibility } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { visible, hidden } = usePageVisibility()
 
   <span class="hljs-keyword">return</span> (
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
