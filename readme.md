@@ -5,21 +5,22 @@ Useful React Hooks
 * [`useAsync`](#async-hook) - Hook to an async function
 * [`useFetch`](#fetch-hook) - Hook to use Fetch
 * [`useGet`](#get-hook) - Hook to make a get request
-* `usePost` - Hook to make an HTTP Post
-* `useClickOutside` - Hook to handle a click outside an element
-* `useGraphQL` - Hook to make a GraphQL request
-* `useKeypress` - Hook to Keypress
-* `useNes` - Hook to connect to Hapijs NES
-* `useWebSockets` - Hook to interact with WebSockets
-* `useLocalStorage` - Hook to local storage
-* `useHover` - Hook for binding to hover of an element
-* `useEventListener` - Hook for binding to an hander to DOM event
-* `useFavicon` - Hook to set a favicon
-* `useTitle` - Hook to manipulate the page title
-* `useStyles` - Hook to add CSS to the page
-* `useStyleSheet` - Hook to add a css file to the page
-* `usePageVisibility` - Hook to use the page visibility api
-* `useOnlineStatus` - Hook to use the online status api
+* [`usePost`](#post-hook) - Hook to make an HTTP Post
+* [`useClickOutside`](#click-outside-hook) - Hook to handle a click outside an element
+* [`useGraphQL`](#graphql-hook) - Hook to make a GraphQL request
+* [`useKeypress`](#keypress-hook) - Hook to Keypress
+* [`useNes`](#nes-hook) - Hook to connect to Hapijs NES
+* [`useWebSockets`](#nes-hook) - Hook to interact with WebSockets
+* [`useLocalStorage`](#local-storage-hook) - Hook to local storage
+* [`useHover`](#hover-hook) - Hook for binding to hover of an element
+* [`useEventListener`](#event-hook) - Hook for binding to an hander to DOM event
+* [`useFavicon`](#favicon-hook) - Hook to set a favicon
+* [`useTitle`](#title-hook) - Hook to manipulate the page title
+* [`useScript`](#script-hook) - Hook to add JavaScript to the page
+* [`useStyles`](#style-hook) - Hook to add CSS to the page
+* [`useStyleSheet`](#stylesheet-hook) - Hook to add a css file to the page
+* [`usePageVisibility`](#pagevisibility-hook) - Hook to use the page visibility api
+* [`useOnlineStatus`](#onlinestatus-hook) - Hook to use the online status api
 
 [Examples](https://brightleaf.github.io/react-hooks/examples/#/)
 
@@ -410,6 +411,22 @@ export default () => {
 }
 ```
 
+## Script Hook
+
+```javascript
+import React from 'react'
+import { useScript } from '@brightleaf/react-hooks'
+
+export default () => {
+  useScript('/js/script.js')
+
+  return (
+    <div>
+      ...
+    </div>
+  );
+}
+```
 ## PageVisibility Hook
 
 ```javascript
@@ -472,6 +489,37 @@ export default () => {
           <div className="message-body">Connection is online </div>
         </article>
       )}
+    </div>
+  )
+}
+```
+
+## Event Hook
+
+```javascript
+import React , { useState } from 'react'
+import { useEventListener } from '@brightleaf/react-hooks'
+
+export default () => {
+  const [state, setState] = useState(window.scrollY)
+  const onScroll = e => {
+    setState(window.scrollY)
+  }
+  useEventListener('scroll', onScroll)
+  return (
+    <div className="App content">
+      <h2>Scroll the page</h2>
+      <span
+        style={{
+          position: 'fixed',
+          top: 10,
+          left: 10,
+          background: '#CCCCCC',
+        }}
+      >
+        {state} scroll position
+      </span>
+      <Home></Home>
     </div>
   )
 }
