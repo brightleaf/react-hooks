@@ -10,6 +10,7 @@ import useKeypress from './use-keypress'
 import useLocalStorage from './use-local-storage'
 import useMutation from './use-mutation'
 import useNes from './use-nes'
+import useOnlineStatus from './use-online-status'
 import usePageVisibility from './use-page-visibility'
 import usePost from './use-post'
 import usePut from './use-put'
@@ -32,6 +33,7 @@ export {
   useLocalStorage,
   useMutation,
   useNes,
+  useOnlineStatus,
   usePageVisibility,
   usePost,
   usePut,
