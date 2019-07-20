@@ -17,6 +17,7 @@ const Poster = React.lazy(() => import('../hooks/poster'))
 const Nes = React.lazy(() => import('../hooks/nes'))
 const Local = React.lazy(() => import('../hooks/local'))
 const Keypress = React.lazy(() => import('../hooks/keypress'))
+const PageViz = React.lazy(() => import('../hooks/page-visibility'))
 const source = createHashSource()
 const history = createHistory(source)
 
@@ -62,6 +63,9 @@ export default class App extends Component {
                 <TabLink to="/examples/nes">Nes</TabLink>
                 <TabLink to="/examples/local">Local Storage</TabLink>
                 <TabLink to="/examples/keypress">Key Press</TabLink>
+                <TabLink to="/examples/page-visibility">
+                  Page Visibility
+                </TabLink>
               </ul>
             </div>
             <Intro />
@@ -75,6 +79,7 @@ export default class App extends Component {
               <Nes path="/examples/nes" />
               <Local path="/examples/local" />
               <Keypress path="/examples/keypress" />
+              <PageViz path="/examples/page-visibility" />
             </Router>
           </React.Suspense>
         </Fragment>

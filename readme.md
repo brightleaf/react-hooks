@@ -18,6 +18,7 @@ Useful React Hooks
 * `useTitle` - Hook to manipulate the page title
 * `useStyles` - Hook to add CSS to the page
 * `useStyleSheet` - Hook to add a css file to the page
+* `usePageVisibility` - Hook to use the page visibility api
 
 [Examples](https://brightleaf.github.io/react-hooks/examples/#/)
 
@@ -366,6 +367,23 @@ export default () => {
     'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
   )
   useStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans')
+
+  return (
+    <div>
+      ...
+    </div>
+  );
+}
+```
+
+## PageVisibility Hook
+
+```javascript
+import React from 'react'
+import { usePageVisibility } from '@brightleaf/react-hooks'
+
+export default () => {
+  const { visible, hidden } = usePageVisibility()
 
   return (
     <div>
