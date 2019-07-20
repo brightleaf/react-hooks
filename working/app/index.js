@@ -18,6 +18,7 @@ const Nes = React.lazy(() => import('../hooks/nes'))
 const Local = React.lazy(() => import('../hooks/local'))
 const Keypress = React.lazy(() => import('../hooks/keypress'))
 const PageViz = React.lazy(() => import('../hooks/page-visibility'))
+const OnlineStatus = React.lazy(() => import('../hooks/online-status'))
 const source = createHashSource()
 const history = createHistory(source)
 
@@ -66,6 +67,7 @@ export default class App extends Component {
                 <TabLink to="/examples/page-visibility">
                   Page Visibility
                 </TabLink>
+                <TabLink to="/examples/online-status">Online status</TabLink>
               </ul>
             </div>
             <Intro />
@@ -80,6 +82,7 @@ export default class App extends Component {
               <Local path="/examples/local" />
               <Keypress path="/examples/keypress" />
               <PageViz path="/examples/page-visibility" />
+              <OnlineStatus path="/examples/online-status" />
             </Router>
           </React.Suspense>
         </Fragment>

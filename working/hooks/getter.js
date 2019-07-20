@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { useGet, useTitle, useFavicon } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useGet example from @brightleaf/react-hooks')
-  useFavicon('https://brightleaf.github.io/react-hooks/brightleaf.ico')
+  const defaultIco = 'brightleaf.ico'
+
+  const [favicon, setFavicon] = useFavicon(defaultIco)
+
   const [id, setId] = useState(1)
 
   const { data, error, loading, getUrl } = useGet(
@@ -38,6 +41,7 @@ export default () => {
             type="button"
             className="button"
             onClick={e => {
+              setFavicon('brightleaf-1.png')
               getUrl('https://swapiql.herokuapp.com/api/characters/1')
             }}
           >
