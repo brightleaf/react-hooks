@@ -46,7 +46,7 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
-    contentBase: './src/public',
+    contentBase: './public',
     hot: true,
   },
   resolve: {
