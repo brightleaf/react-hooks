@@ -46,51 +46,88 @@ const TabLink = props => {
     </Location>
   )
 }
-
+const Menu = () => {
+  return (
+    <aside className="menu">
+      <p className="menu-label">Hooks</p>
+      <ul className="menu-list">
+        <TabLink to="/">Home</TabLink>
+      </ul>
+      <p className="menu-label">General</p>
+      <ul className="menu-list">
+        <TabLink to="/examples/local">Local Storage</TabLink>
+        <TabLink to="/examples/keypress">Key Press</TabLink>
+        <TabLink to="/examples/page-visibility">Page Visibility</TabLink>
+        <TabLink to="/examples/online-status">Online status</TabLink>
+        <TabLink to="/examples/events">Events</TabLink>
+        <TabLink to="/examples/media-query">Media Query</TabLink>
+        <li>
+          <a href="#hover-hook">Hover</a>
+        </li>
+        <li>
+          <a href="#click-outside-hook">Click Outside</a>
+        </li>
+      </ul>
+      <p className="menu-label">HTTP</p>
+      <ul className="menu-list">
+        <TabLink to="/examples">Fetch</TabLink>
+        <TabLink to="/examples/getter">Get</TabLink>
+        <TabLink to="/examples/graph">GraphQL</TabLink>
+        <TabLink to="/examples/grapher">GraphQL Vars</TabLink>
+        <TabLink to="/examples/poster">Poster</TabLink>
+        <TabLink to="/examples/nes">Nes</TabLink>
+      </ul>
+      <p className="menu-label">Page</p>
+      <ul className="menu-list">
+        <li>
+          <a href="#script-hook">Script</a>
+        </li>
+        <li>
+          <a href="#style-hook">Style</a>
+        </li>
+        <li>
+          <a href="#stylesheet-hook">StyleSheet</a>
+        </li>
+        <li>
+          <a href="#favicon-hook">Favicon</a>
+        </li>
+        <li>
+          <a href="#title-hook">Title</a>
+        </li>
+      </ul>
+    </aside>
+  )
+}
 export default class App extends Component {
   render() {
     return (
       <LocationProvider history={history}>
-        <Fragment>
-          <React.Suspense fallback={<div>Loading</div>}>
-            <div className="tabs">
-              <ul>
-                <TabLink to="/">Home</TabLink>
-                <TabLink to="/examples">Fetch</TabLink>
-                <TabLink to="/examples/getter">Get</TabLink>
-                <TabLink to="/examples/graph">GraphQL</TabLink>
-                <TabLink to="/examples/grapher">GraphQL Vars</TabLink>
-                <TabLink to="/examples/poster">Poster</TabLink>
-                <TabLink to="/examples/nes">Nes</TabLink>
-                <TabLink to="/examples/local">Local Storage</TabLink>
-                <TabLink to="/examples/keypress">Key Press</TabLink>
-                <TabLink to="/examples/page-visibility">
-                  Page Visibility
-                </TabLink>
-                <TabLink to="/examples/online-status">Online status</TabLink>
-                <TabLink to="/examples/events">Events</TabLink>
-                <TabLink to="/examples/media-query">Media Query</TabLink>
-              </ul>
+        <React.Suspense fallback={<div>Loading</div>}>
+          <div className="columns">
+            <div className="column is-one-quarter">
+              <Menu />
             </div>
-            <Intro />
-            <Router>
-              <Home path="/" />
-              <Home path="*" />
-              <Fetch path="/examples" />
-              <Getter path="/examples/getter" />
-              <Graph path="/examples/graph" />
-              <Grapher path="/examples/grapher" />
-              <Poster path="/examples/poster" />
-              <Nes path="/examples/nes" />
-              <Local path="/examples/local" />
-              <Keypress path="/examples/keypress" />
-              <PageViz path="/examples/page-visibility" />
-              <OnlineStatus path="/examples/online-status" />
-              <EventExample path="/examples/events" />
-              <MediaQueryMatch path="/examples/media-query" />
-            </Router>
-          </React.Suspense>
-        </Fragment>
+            <div className="column is-three-quarters">
+              <Intro />
+              <Router>
+                <Home path="/" />
+                <Home path="*" />
+                <Fetch path="/examples" />
+                <Getter path="/examples/getter" />
+                <Graph path="/examples/graph" />
+                <Grapher path="/examples/grapher" />
+                <Poster path="/examples/poster" />
+                <Nes path="/examples/nes" />
+                <Local path="/examples/local" />
+                <Keypress path="/examples/keypress" />
+                <PageViz path="/examples/page-visibility" />
+                <OnlineStatus path="/examples/online-status" />
+                <EventExample path="/examples/events" />
+                <MediaQueryMatch path="/examples/media-query" />
+              </Router>
+            </div>
+          </div>
+        </React.Suspense>
       </LocationProvider>
     )
   }
