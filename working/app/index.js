@@ -20,6 +20,7 @@ const Keypress = React.lazy(() => import('../hooks/keypress'))
 const PageViz = React.lazy(() => import('../hooks/page-visibility'))
 const OnlineStatus = React.lazy(() => import('../hooks/online-status'))
 const EventExample = React.lazy(() => import('../hooks/event-example'))
+const MediaQueryMatch = React.lazy(() => import('../hooks/media-match'))
 const source = createHashSource()
 const history = createHistory(source)
 
@@ -68,6 +69,7 @@ export default class App extends Component {
                 </TabLink>
                 <TabLink to="/examples/online-status">Online status</TabLink>
                 <TabLink to="/examples/events">Events</TabLink>
+                <TabLink to="/examples/media-query">Media Query</TabLink>
               </ul>
             </div>
             <Intro />
@@ -85,6 +87,7 @@ export default class App extends Component {
               <PageViz path="/examples/page-visibility" />
               <OnlineStatus path="/examples/online-status" />
               <EventExample path="/examples/events" />
+              <MediaQueryMatch path="/examples/media-query" />
             </Router>
           </React.Suspense>
         </Fragment>

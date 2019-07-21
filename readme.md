@@ -21,6 +21,7 @@ Useful React Hooks
 * [`useStyleSheet`](#stylesheet-hook) - Hook to add a css file to the page
 * [`usePageVisibility`](#pagevisibility-hook) - Hook to use the page visibility api
 * [`useOnlineStatus`](#onlinestatus-hook) - Hook to use the online status api
+* [`useMediaQuery`](#media-query-hook) - Hook to return if the media query is matched
 
 [Examples](https://brightleaf.github.io/react-hooks/examples/#/)
 
@@ -520,6 +521,27 @@ export default () => {
         {state} scroll position
       </span>
       <Home></Home>
+    </div>
+  )
+}
+```
+
+## Media Query Hook
+
+```javascript
+import React , { useState } from 'react'
+import { useMediaQuery } from '@brightleaf/react-hooks'
+
+export default () => {
+
+  const { matches } = useMediaQuery('(min-width: 500px)')
+  return (
+    <div className="App content">
+      {matches && (
+        <article className="message is-warning">
+          <div className="message-body">The page is at least 500px</div>
+        </article>
+      )}
     </div>
   )
 }

@@ -8,6 +8,7 @@ import useGet from './use-get'
 import useGraphQL from './use-graphql'
 import useKeypress from './use-keypress'
 import useLocalStorage from './use-local-storage'
+import useMediaQuery from './use-media-query'
 import useMutation from './use-mutation'
 import useNes from './use-nes'
 import useOnlineStatus from './use-online-status'
@@ -31,6 +32,7 @@ export {
   useGraphQL,
   useKeypress,
   useLocalStorage,
+  useMediaQuery,
   useMutation,
   useNes,
   useOnlineStatus,
