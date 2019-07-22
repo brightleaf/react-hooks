@@ -49,6 +49,7 @@
 <li><a href="#stylesheet-hook"><code>useStyleSheet</code></a> - Hook to add a css file to the page</li>
 <li><a href="#pagevisibility-hook"><code>usePageVisibility</code></a> - Hook to use the page visibility api</li>
 <li><a href="#onlinestatus-hook"><code>useOnlineStatus</code></a> - Hook to use the online status api</li>
+<li><a href="#media-query-hook"><code>useMediaQuery</code></a> - Hook to return if the media query is matched</li>
 </ul>
 <p><a href="https://brightleaf.github.io/react-hooks/examples/#/">Examples</a></p>
 <h2 id="async-hook">Async Hook</h2>
@@ -469,6 +470,23 @@
         {state} scroll position
       <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">Home</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Home</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}</code></pre>
+<h2 id="media-query-hook">Media Query Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React , { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useMediaQuery } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> { matches } = useMediaQuery(<span class="hljs-string">'(min-width: 500px)'</span>)
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App content"</span>&gt;</span>
+      {matches &amp;&amp; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"message is-warning"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"message-body"</span>&gt;</span>The page is at least 500px<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+      )}
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   )
 }</code></pre>
