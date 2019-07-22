@@ -23,7 +23,7 @@ Useful React Hooks
 * [`useOnlineStatus`](#onlinestatus-hook) - Hook to use the online status api
 * [`useMediaQuery`](#media-query-hook) - Hook to return if the media query is matched
 
-[Examples](https://brightleaf.github.io/react-hooks/examples/#/)
+[Examples](https://brightleaf.dev/hooks/examples/#/)
 
 ## Async Hook
 
