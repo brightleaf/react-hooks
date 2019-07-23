@@ -25,6 +25,10 @@ export default () => {
         {visible && 'Visible'}
         {hidden && 'Hidden'}
       </h2>
+      <p>
+        When the page is not visible the page icon will change and will change
+        again when the page becomes visible
+      </p>
     </div>
   )
 }
