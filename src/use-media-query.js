@@ -26,7 +26,6 @@ const useMediaQuery = mediaQuery => {
     matches: false,
   })
   const change = query => {
-    console.log('change')
     if (query.matches) {
       dispatch({ type: 'match' })
     } else if (state.matches) {
