@@ -1,5 +1,5 @@
 import useRequest from './use-request'
-
+import { mergeDeep } from './utils/merge-deep'
 const defaultConfig = {
   mode: 'cors',
   cache: 'no-cache',
@@ -36,7 +36,8 @@ export const useGet = (
     error: null,
     loading: false,
   })
-  const fullConfig = { ...defaultConfig, ...config }
+
+  const fullConfig = mergeDeep(defaultConfig, config)
   /**
    * getUrl - HTTP Get the url passed in
    *
