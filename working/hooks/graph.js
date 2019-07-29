@@ -1,8 +1,9 @@
-import React from 'react'
-import { useGraphQL, useTitle } from '@brightleaf/react-hooks'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react'
+import { useTitle, useQuery } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useGraphQL example from @brightleaf/react-hooks')
-  const { data, loading, error } = useGraphQL(
+  const { data, loading, error, makeQuery } = useQuery(
     'https://swapiql.herokuapp.com/graphql',
     `{
       person(id: 1) {
@@ -19,10 +20,11 @@ export default () => {
           name
         }
       }
-    }`,
-    {}
+    }`
   )
-
+  useEffect(() => {
+    makeQuery()
+  }, [])
   if (loading) {
     return (
       <div className="App">
@@ -34,6 +36,15 @@ export default () => {
   if (error) {
     return <div>error</div>
   }
+  if (data && data.length === 0) {
+    return (
+      <div className="App">
+        <h2>Loading</h2>
+        <span className="loader loader-xl" />
+      </div>
+    )
+  }
+
   return (
     <div className="content">
       <h2>SWAPI GraphQL</h2>

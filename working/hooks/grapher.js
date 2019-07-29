@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useGraphQL, useTitle } from '@brightleaf/react-hooks'
+import { useGraphQL, useTitle, useQuery } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useGraphQL example from @brightleaf/react-hooks')
-  const [id, setId] = useState(1)
-  const { data, loading, error } = useGraphQL(
+
+  const { data, loading, error, makeQuery } = useQuery(
     'https://swapiql.herokuapp.com/graphql',
     `query Person($id: ID) {
       person(id: $id) {
@@ -21,9 +21,12 @@ export default () => {
         }
       }
     }`,
-    { id }
+    { id: 1 }
   )
 
+  if (data.length === 0 && !loading) {
+    makeQuery({ id: 1 })
+  }
   if (loading) {
     return (
       <div className="App">
@@ -35,16 +38,24 @@ export default () => {
   if (error) {
     return <div>Error getting graphql data</div>
   }
+  if (!data.person) {
+    return (
+      <div className="App">
+        <h2>Loading It</h2>
+        <span className="loader loader-xl" />
+      </div>
+    )
+  }
   return (
     <div className="App content">
-      <h2>{data.person[0].name}</h2>
+      <h2>{data.person[0].name} - er</h2>
       <h3>Pick a number</h3>
       <div className="field is-grouped">
         <p className="control">
           <button
             className="button mar-r-sm"
             onClick={e => {
-              setId(1)
+              makeQuery({ id: 1 })
             }}
           >
             1
@@ -55,7 +66,7 @@ export default () => {
             type="button"
             className="button mar-r-sm"
             onClick={e => {
-              setId(2)
+              makeQuery({ id: 2 })
             }}
           >
             2
@@ -66,7 +77,7 @@ export default () => {
             type="button"
             className="button mar-r-sm"
             onClick={e => {
-              setId(3)
+              makeQuery({ id: 3 })
             }}
           >
             3
@@ -78,7 +89,7 @@ export default () => {
             className="button mar-r-sm"
             onClick={e => {
               console.log('click')
-              setId(4)
+              makeQuery({ id: 4 })
             }}
           >
             4
@@ -89,7 +100,7 @@ export default () => {
             type="button"
             className="button mar-r-sm"
             onClick={e => {
-              setId(5)
+              makeQuery({ id: 5 })
             }}
           >
             5
@@ -100,7 +111,7 @@ export default () => {
             type="button"
             className="button mar-r-sm"
             onClick={e => {
-              setId(6)
+              makeQuery({ id: 6 })
             }}
           >
             6
