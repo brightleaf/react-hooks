@@ -1,4 +1,4 @@
-import { request } from 'graphql-request'
+import { GraphQLClient } from 'graphql-request'
 import { useReducer } from 'react'
 
 const reducer = (state, action) => {
@@ -24,7 +24,9 @@ const reducer = (state, action) => {
   }
 }
 
-const useMutation = function(url, query) {
+const useMutation = function(url, query, options = {}) {
+  const client = new GraphQLClient(url, options)
+
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
@@ -32,7 +34,7 @@ const useMutation = function(url, query) {
   })
   const makeQuery = async variables => {
     dispatch({ type: 'get' })
-    const resp = await request(url, query, variables)
+    const resp = await client.request(query, variables)
     const data = resp
     dispatch({ type: 'success', payload: { data } })
   }
