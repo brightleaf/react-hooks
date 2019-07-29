@@ -1,6 +1,7 @@
-import { request } from 'graphql-request'
+import { GraphQLClient } from 'graphql-request'
 import { useEffect, useReducer } from 'react'
-
+import { useRequest } from './use-request'
+import { mergeDeep } from './utils/merge-deep'
 const reducer = (state, action) => {
   switch (action.type) {
     case 'get':
@@ -41,7 +42,8 @@ const reducer = (state, action) => {
  * @param {object} variables - The variables object to be used with query
  * @returns {...GraphQL~State} - The states and results and the call to make the request
  */
-const useGraphQL = function(url, query, variables = {}) {
+const useGraphQL = function(url, query, variables = {}, options = {}) {
+  const client = new GraphQLClient(url, options)
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
@@ -49,7 +51,7 @@ const useGraphQL = function(url, query, variables = {}) {
   })
   const fetchQuery = async variables => {
     dispatch({ type: 'loading' })
-    const resp = await request(url, query, variables)
+    const resp = await client.request(query, variables)
     const data = resp
     dispatch({ type: 'success', payload: { data } })
   }
@@ -65,3 +67,44 @@ const useGraphQL = function(url, query, variables = {}) {
 
 export { useGraphQL }
 export default useGraphQL
+
+const defaultConfig = {
+  method: 'POST',
+  mode: 'cors',
+  cache: 'no-cache',
+  credentials: 'same-origin',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  redirect: 'follow',
+  referrer: 'no-referrer',
+}
+
+export const useQuery = (
+  url = '/graphql',
+  query,
+  config = {
+    method: 'POST',
+  }
+) => {
+  const { data, error, loading, makeRequest } = useRequest(url, {
+    data: null,
+    error: null,
+    loading: false,
+  })
+  const fullConfig = mergeDeep(defaultConfig, config)
+
+  /**
+   * postData - Post data to url
+   *
+   * @param {object} data - the data to post
+   */
+  const makeQuery = async variables => {
+    await makeRequest({
+      ...fullConfig,
+      body: JSON.stringify({ query, variables }),
+    })
+  }
+
+  return { data, error, loading, makeQuery }
+}
