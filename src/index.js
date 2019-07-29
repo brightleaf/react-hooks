@@ -5,7 +5,7 @@ import useEventListener from './use-event-listener'
 import useFavicon from './use-favicon'
 import useFetch from './use-fetch'
 import useGet from './use-get'
-import useGraphQL from './use-graphql'
+import useGraphQL, { useQuery } from './use-graphql'
 import useKeypress from './use-keypress'
 import useLocalStorage from './use-local-storage'
 import useMediaQuery from './use-media-query'
@@ -39,6 +39,7 @@ export {
   usePageVisibility,
   usePost,
   usePut,
+  useQuery,
   useScript,
   useStyles,
   useStyleSheet,
