@@ -1,4 +1,5 @@
 import useRequest from './use-request'
+import { mergeDeep } from './utils/merge-deep'
 
 const defaultConfig = {
   mode: 'cors',
@@ -36,7 +37,7 @@ export const usePost = (
     error: null,
     loading: false,
   })
-  const fullConfig = { ...defaultConfig, ...config }
+  const fullConfig = mergeDeep(defaultConfig, config)
 
   /**
    * postData - Post data to url
