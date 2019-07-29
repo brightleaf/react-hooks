@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 import { reducer } from './reducer'
-
+import { mergeDeep } from './utils/merge-deep'
 const defaultConfig = {
   mode: 'cors',
   cache: 'no-cache',
@@ -33,7 +33,7 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
     loading: false,
   })
 
-  const fullConfig = { ...defaultConfig, ...config }
+  const fullConfig = mergeDeep(defaultConfig, config)
   /**
    * makeRequest - HTTP Get the url passed in
    * @param {object} config - The fetch configuration
@@ -45,7 +45,12 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
     const resp = await fetch(urlToFetch, config)
 
     const result = await resp.json()
-    dispatch({ type: 'success', payload: { data: result } })
+
+    if (result && result.data) {
+      return dispatch({ type: 'success', payload: { data: result.data } })
+    }
+
+    return dispatch({ type: 'success', payload: { data: result } })
   }
   return { ...state, makeRequest }
 }
