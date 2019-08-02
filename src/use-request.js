@@ -44,11 +44,16 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
 
     const resp = await fetch(urlToFetch, config)
 
-    const result = await resp.json()
+    if (config.headers['Content-Type'] === 'application/json') {
+      const result = await resp.json()
 
-    if (result && result.data) {
-      return dispatch({ type: 'success', payload: { data: result.data } })
+      if (result && result.data) {
+        return dispatch({ type: 'success', payload: { data: result.data } })
+      }
+
+      return dispatch({ type: 'success', payload: { data: result } })
     }
+    const result = await resp.text()
 
     return dispatch({ type: 'success', payload: { data: result } })
   }
