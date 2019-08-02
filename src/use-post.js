@@ -48,7 +48,10 @@ export const usePost = (
     await makeRequest({
       method: 'POST',
       ...fullConfig,
-      body: JSON.stringify(data),
+      body:
+        typeof data === 'string' || data instanceof String
+          ? data
+          : JSON.stringify(data),
     })
   }
 
