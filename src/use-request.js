@@ -31,6 +31,7 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
     data: [],
     error: null,
     loading: false,
+    complete: false,
   })
 
   const fullConfig = mergeDeep(defaultConfig, config)

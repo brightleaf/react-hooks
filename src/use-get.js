@@ -31,11 +31,7 @@ export const useGet = (
     method: 'GET',
   }
 ) => {
-  const { data, error, loading, makeRequest } = useRequest(url, {
-    data: [],
-    error: null,
-    loading: false,
-  })
+  const { data, error, loading, makeRequest } = useRequest(url)
 
   const fullConfig = mergeDeep(defaultConfig, config)
   /**
