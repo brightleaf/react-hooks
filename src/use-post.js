@@ -32,7 +32,7 @@ export const usePost = (
     method: 'POST',
   }
 ) => {
-  const { data, error, loading, makeRequest } = useRequest(url)
+  const { data, error, loading, complete, makeRequest } = useRequest(url)
   const fullConfig = mergeDeep(defaultConfig, config)
 
   /**
@@ -51,7 +51,7 @@ export const usePost = (
     })
   }
 
-  return { data, error, loading, postData }
+  return { data, error, loading, complete, postData }
 }
 
 export default usePost

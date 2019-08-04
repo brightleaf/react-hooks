@@ -31,7 +31,7 @@ export const useGet = (
     method: 'GET',
   }
 ) => {
-  const { data, error, loading, makeRequest } = useRequest(url)
+  const { data, error, loading, complete, makeRequest } = useRequest(url)
 
   const fullConfig = mergeDeep(defaultConfig, config)
   /**
@@ -49,7 +49,7 @@ export const useGet = (
     )
   }
 
-  return { data, error, loading, getUrl }
+  return { data, error, loading, complete, getUrl }
 }
 
 export default useGet

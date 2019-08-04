@@ -31,7 +31,7 @@ export const usePut = (
     method: 'PUT',
   }
 ) => {
-  const { data, error, loading, makeRequest } = useRequest(url, {
+  const { data, error, loading, complete, makeRequest } = useRequest(url, {
     data: [],
     error: null,
     loading: false,
@@ -50,7 +50,7 @@ export const usePut = (
     })
   }
 
-  return { data, error, loading, putData }
+  return { data, error, loading, complete, putData }
 }
 
 export default usePut
