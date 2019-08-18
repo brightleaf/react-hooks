@@ -30,7 +30,7 @@ const useMutation = function(url, query, options = {}) {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
-    loading: true,
+    loading: false,
   })
   const makeQuery = async variables => {
     dispatch({ type: 'get' })

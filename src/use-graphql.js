@@ -47,7 +47,7 @@ const useGraphQL = function(url, query, variables = {}, options = {}) {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
-    loading: true,
+    loading: false,
   })
   const fetchQuery = async variables => {
     dispatch({ type: 'loading' })
