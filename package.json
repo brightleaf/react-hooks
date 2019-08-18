@@ -6,7 +6,9 @@
     "/lib"
   ],
   "main": "./lib/index.js",
+  "module": "lib/brightleaf-react-hooks.esm.js",
   "scripts": {
+    "roll": "rollup -c",
     "test": "jest ./src",
     "dev": "webpack-dev-server --config ./webpack/webpack.config.js --mode development",
     "preversion": "npx isom build && npx isom build:examples",
@@ -68,6 +70,10 @@
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.12.6",
     "react-test-renderer": "^16.8.6",
+    "rollup": "^1.19.4",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
