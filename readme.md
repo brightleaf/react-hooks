@@ -10,8 +10,8 @@ Useful React Hooks
 * [`useGraphQL`](#graphql-hook) - Hook to make a GraphQL request
 * [`useKeypress`](#keypress-hook) - Hook to Keypress
 * [`useKeypressed`](#key-pressed-hook) - Hook to fire a method when the keydown is triggered
-* [`useNes`](#nes-hook) - Hook to connect to Hapijs NES
-* [`useWebSockets`](#nes-hook) - Hook to interact with WebSockets
+* [`useNes`](#/examples/nes) - Hook to connect to Hapijs NES
+* [`useWebSockets`](#/examples/ws) - Hook to interact with WebSockets
 * [`useLocalStorage`](#local-storage-hook) - Hook to local storage
 * [`useHover`](#hover-hook) - Hook for binding to hover of an element
 * [`useEventListener`](#event-hook) - Hook for binding to an hander to DOM event
@@ -279,9 +279,14 @@ export default () => {
   return <div>The Page</div>
 }
 ```
+
 # NES Hook
 
 Client hook for connecting to an [NES](https://github.com/hapijs/nes) instance
+
+# WebSocket Hook
+
+#/examples/ws
 
 
 ### Messages
