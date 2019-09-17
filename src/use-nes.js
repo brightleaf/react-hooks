@@ -12,6 +12,7 @@ const reducer = (state, action, ...other) => {
     case 'message':
       const message = [].concat(state.message)
       message.push(action.payload.data)
+
       return {
         ...state,
         message,

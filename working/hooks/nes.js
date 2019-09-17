@@ -1,14 +1,11 @@
 import React from 'react'
-import { useGet, useNes, useTitle } from '@brightleaf/react-hooks'
+import { useNes, useTitle } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useNes example from @brightleaf/react-hooks')
-  const { getUrl } = useGet()
 
-  const { message, error, connecting, connected, ...theRest } = useNes(
+  const { message, error, connecting, connected, client } = useNes(
     'wss://kev-pi.herokuapp.com'
   )
-
-  console.info('The rest', theRest)
 
   if (error) {
     return (
@@ -44,8 +41,9 @@ export default () => {
       <div className="pad-t-md mar-t-md">
         <div
           className="button"
-          onClick={e => {
-            getUrl(`https://kev-pi.herokuapp.com/send`)
+          onClick={async e => {
+            await client.connect()
+            await client.message('The message from the client')
           }}
         >
           Send a message from server
