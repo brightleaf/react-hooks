@@ -12,7 +12,9 @@ test('should execute async function', async () => {
   const { result, waitForNextUpdate } = renderHook(() => useAsync(asyncFun))
 
   expect(result.current.data).toBe(null)
-  result.current.execute()
+  act(() => {
+    result.current.execute()
+  })
   await waitForNextUpdate()
 
   expect(result.current.data.complete).toBe(true)
