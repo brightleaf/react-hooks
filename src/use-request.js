@@ -1,16 +1,20 @@
 import { useReducer } from 'react'
 import { reducer } from './reducer'
 import { mergeDeep } from './utils/merge-deep'
+
+const JSON_CONTENT_TYPE = 'application/json'
+
 const defaultConfig = {
   mode: 'cors',
   cache: 'no-cache',
   credentials: 'same-origin',
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': JSON_CONTENT_TYPE,
   },
   redirect: 'follow',
   referrer: 'no-referrer',
 }
+
 /**
  * @typedef {Object} Request~State
  * @property {Object|array} data - The data returned from the function.
@@ -30,6 +34,7 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     error: null,
+    errorDetails: null,
     loading: false,
     complete: false,
   })
@@ -45,16 +50,34 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
 
     const resp = await fetch(urlToFetch, config)
 
-    if (config.headers['Content-Type'] === 'application/json') {
+    const ok = resp.ok
+
+    const respHeader = resp.headers.get('Content-Type')
+
+    if (
+      config.headers['Content-Type'] === JSON_CONTENT_TYPE &&
+      respHeader === JSON_CONTENT_TYPE
+    ) {
       const result = await resp.json()
 
-      if (result && result.data) {
+      if (ok && result && result.data) {
         return dispatch({ type: 'success', payload: { data: result.data } })
       }
-
+      if (!ok && result) {
+        return dispatch({
+          type: 'error',
+          payload: result,
+        })
+      }
       return dispatch({ type: 'success', payload: { data: result } })
     }
     const result = await resp.text()
+    if (!ok) {
+      return dispatch({
+        type: 'error',
+        payload: { data: null, error: result },
+      })
+    }
 
     return dispatch({ type: 'success', payload: { data: result } })
   }
