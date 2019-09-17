@@ -9,6 +9,7 @@ Useful React Hooks
 * [`useClickOutside`](#click-outside-hook) - Hook to handle a click outside an element
 * [`useGraphQL`](#graphql-hook) - Hook to make a GraphQL request
 * [`useKeypress`](#keypress-hook) - Hook to Keypress
+* [`useKeypressed`](#key-pressed-hook) - Hook to fire a method when the keydown is triggered
 * [`useNes`](#nes-hook) - Hook to connect to Hapijs NES
 * [`useWebSockets`](#nes-hook) - Hook to interact with WebSockets
 * [`useLocalStorage`](#local-storage-hook) - Hook to local storage
@@ -127,6 +128,30 @@ export default () => {
   )
 }
 ```
+
+## Key Pressed Hook
+
+```jsx
+import React, { useState } from 'react'
+import { useKeypressed } from '@brightleaf/react-hooks'
+export default () => {
+
+  const keyPressed = useKeypressed('a')
+
+  return (
+    <div className="App content">
+      <h2>Key Press?</h2>
+      {keyPressed && (
+        <div>
+          Yes, the <b>{'"a"'}</b> key has been pressed
+        </div>
+      )}
+      {!keyPressed && <div>No the <b>{'"a"'}</b> key is not been pressed yet</div>}
+    </div>
+  )
+}
+```
+
 
 ## Post Hook
 
