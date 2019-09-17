@@ -37,8 +37,9 @@
 <li><a href="#click-outside-hook"><code>useClickOutside</code></a> - Hook to handle a click outside an element</li>
 <li><a href="#graphql-hook"><code>useGraphQL</code></a> - Hook to make a GraphQL request</li>
 <li><a href="#keypress-hook"><code>useKeypress</code></a> - Hook to Keypress</li>
-<li><a href="#nes-hook"><code>useNes</code></a> - Hook to connect to Hapijs NES</li>
-<li><a href="#nes-hook"><code>useWebSockets</code></a> - Hook to interact with WebSockets</li>
+<li><a href="#key-pressed-hook"><code>useKeypressed</code></a> - Hook to fire a method when the keydown is triggered</li>
+<li><a href="#/examples/nes"><code>useNes</code></a> - Hook to connect to Hapijs NES</li>
+<li><a href="#/examples/ws"><code>useWebSockets</code></a> - Hook to interact with WebSockets</li>
 <li><a href="#local-storage-hook"><code>useLocalStorage</code></a> - Hook to local storage</li>
 <li><a href="#hover-hook"><code>useHover</code></a> - Hook for binding to hover of an element</li>
 <li><a href="#event-hook"><code>useEventListener</code></a> - Hook for binding to an hander to DOM event</li>
@@ -136,6 +137,25 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       )}
       {!keyDown &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>No the <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{'"a"'}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> key is not currently pressed<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}</code></pre>
+<h2 id="key-pressed-hook">Key Pressed Hook</h2>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useKeypressed } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> keyPressed = useKeypressed(<span class="hljs-string">'a'</span>)
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Key Press?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      {keyPressed &amp;&amp; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+          Yes, the <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{'"a"'}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> key has been pressed
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      )}
+      {!keyPressed &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>No the <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{'"a"'}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> key is not been pressed yet<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>}
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   )
 }</code></pre>
@@ -251,6 +271,8 @@
 }</code></pre>
 <h1 id="nes-hook">NES Hook</h1>
 <p>Client hook for connecting to an <a href="https://github.com/hapijs/nes">NES</a> instance</p>
+<h1 id="websocket-hook">WebSocket Hook</h1>
+<p>#/examples/ws</p>
 <h3 id="messages">Messages</h3>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
 <span class="hljs-keyword">import</span> { useNes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
