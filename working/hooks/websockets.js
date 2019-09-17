@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useWebSocket, useTitle } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useWebSocket example from @brightleaf/react-hooks')
-
+  const [messageToSend, setMessageToSend] = useState(
+    `This is a test message ${new Date()}`
+  )
   const { message, error, connecting, connected, sendMessage } = useWebSocket(
     'wss://wskev.herokuapp.com'
   )
@@ -37,12 +39,25 @@ export default () => {
   return (
     <div className="App content">
       <h2>Messages from Server</h2>
+      <br />
       <div>{messages}</div>
+      <br />
+      <div className="control field">
+        <label htmlFor="msg">Message to send</label>
+        <input
+          type="text"
+          id="msg"
+          className="input"
+          value={messageToSend}
+          onChange={e => setMessageToSend(e.target.value)}
+        />
+      </div>
       <div className="pad-t-md mar-t-md">
         <div
           className="button"
           onClick={e => {
-            sendMessage(`This is a test message ${new Date()}`)
+            sendMessage(messageToSend)
+            setMessageToSend(`This is another test message ${new Date()}`)
           }}
         >
           Send a message from server

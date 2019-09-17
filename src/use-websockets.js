@@ -36,7 +36,14 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
   const websocket = new WebSocket(url)
 
   const send = message => {
-    websocket.send(message)
+    if (websocket.readyState === WebSocket.OPEN) {
+      websocket.send(message)
+    } else {
+      console.warn('The WebSocket is not ready')
+      setTimeout(() => {
+        send(message)
+      }, 100)
+    }
   }
   const connectClient = useCallback(() => {
     dispatch({ type: 'get' })
@@ -55,12 +62,16 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
     dispatch({ type: 'connecting', payload: {} })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [websocket.onclose, websocket.onmessage, websocket.onopen])
+  }, [url])
 
   useEffect(() => {
     connectClient()
-  }, [connectClient])
-  return { ...state, sendMessage: send }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url])
+  return {
+    ...state,
+    sendMessage: send,
+  }
 }
 
 export { useWebSocket }
