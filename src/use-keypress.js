@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /**
- * useKeypress Hook to allow setting of the page title
+ * useKeypress Hook to return true when key is pressed
  *
  * @param {string} key - The text to be used to set the page title
  * @param {HTMLElement} element - The element to listen on for the keypress
