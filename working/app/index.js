@@ -15,8 +15,10 @@ const Grapher = React.lazy(() => import('../hooks/grapher'))
 const Getter = React.lazy(() => import('../hooks/getter'))
 const Poster = React.lazy(() => import('../hooks/poster'))
 const Nes = React.lazy(() => import('../hooks/nes'))
+const WebSocketExample = React.lazy(() => import('../hooks/websockets'))
 const Local = React.lazy(() => import('../hooks/local'))
 const Keypress = React.lazy(() => import('../hooks/keypress'))
+const Keyhandler = React.lazy(() => import('../hooks/keyhandler'))
 const PageViz = React.lazy(() => import('../hooks/page-visibility'))
 const OnlineStatus = React.lazy(() => import('../hooks/online-status'))
 const EventExample = React.lazy(() => import('../hooks/event-example'))
@@ -124,6 +126,8 @@ export default class App extends Component {
                 <OnlineStatus path="/examples/online-status" />
                 <EventExample path="/examples/events" />
                 <MediaQueryMatch path="/examples/media-query" />
+                <WebSocketExample path="/examples/ws" />
+                <Keyhandler path="/examples/keyhandler" />
               </Router>
             </div>
           </div>
