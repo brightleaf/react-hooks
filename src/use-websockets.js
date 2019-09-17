@@ -9,9 +9,10 @@ const reducer = (state, action) => {
     case 'closed':
       return { ...state, connecting: false, connected: false }
     case 'message':
+      state.message.push(action.payload.data)
       return {
         ...state,
-        message: state.message + action.payload.data,
+        message: state.message,
         error: null,
         loading: false,
       }
@@ -34,6 +35,9 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
   })
   const websocket = new WebSocket(url)
 
+  const send = message => {
+    websocket.send(message)
+  }
   const connectClient = useCallback(() => {
     dispatch({ type: 'get' })
     websocket.onopen = () => {
@@ -49,12 +53,14 @@ const useWebSocket = (url = 'ws://localhost:4567') => {
     }
 
     dispatch({ type: 'connecting', payload: {} })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [websocket.onclose, websocket.onmessage, websocket.onopen])
 
   useEffect(() => {
     connectClient()
   }, [connectClient])
-  return { ...state }
+  return { ...state, sendMessage: send }
 }
 
 export { useWebSocket }
