@@ -78,6 +78,7 @@ const Menu = () => {
         <TabLink to="/examples/grapher">GraphQL Vars</TabLink>
         <TabLink to="/examples/poster">Poster</TabLink>
         <TabLink to="/examples/nes">Nes</TabLink>
+        <TabLink to="/examples/ws">WebSockets</TabLink>
       </ul>
       <p className="menu-label">Page</p>
       <ul className="menu-list">
