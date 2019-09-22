@@ -23,7 +23,11 @@
     "graphql",
     "fetch",
     "DOM",
-    "hooks"
+    "hooks",
+    "helpers",
+    "cookies",
+    "reactjs",
+    "events"
   ],
   "homepage": "https://brightleaf.dev/hooks",
   "author": "Brightleaf JS",

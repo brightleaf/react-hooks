@@ -13,6 +13,7 @@ Useful React Hooks
 * [`useNes`](#/examples/nes) - Hook to connect to Hapijs NES
 * [`useWebSockets`](#/examples/ws) - Hook to interact with WebSockets
 * [`useLocalStorage`](#local-storage-hook) - Hook to local storage
+* [`useCookie`](#cookie-hook) - Hook to Cookies
 * [`useHover`](#hover-hook) - Hook for binding to hover of an element
 * [`useEventListener`](#event-hook) - Hook for binding to an hander to DOM event
 * [`useFavicon`](#favicon-hook) - Hook to set a favicon
@@ -361,8 +362,28 @@ import React, { useRef } from 'react'
 import { useLocalStorage } from '@brightleaf/react-hooks'
 
 export default () => {
-  const [count, setCount] = useLocalStorage(0);
+  const [count, setCount] = useLocalStorage('count', 0);
 
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+## Cookie Hook
+
+```javascript
+import React, { useRef } from 'react'
+import { useCookie } from '@brightleaf/react-hooks'
+
+export default () => {
+  const [count, setCount] = useCookie('count', 0);
+  const [longCount, setLongCount] = useCookie('count', 0, { expires: 21 });
   return (
     <div>
       <p>You clicked {count} times</p>
