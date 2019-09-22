@@ -41,6 +41,7 @@
 <li><a href="#/examples/nes"><code>useNes</code></a> - Hook to connect to Hapijs NES</li>
 <li><a href="#/examples/ws"><code>useWebSockets</code></a> - Hook to interact with WebSockets</li>
 <li><a href="#local-storage-hook"><code>useLocalStorage</code></a> - Hook to local storage</li>
+<li><a href="#cookie-hook"><code>useCookie</code></a> - Hook to Cookies</li>
 <li><a href="#hover-hook"><code>useHover</code></a> - Hook for binding to hover of an element</li>
 <li><a href="#event-hook"><code>useEventListener</code></a> - Hook for binding to an hander to DOM event</li>
 <li><a href="#favicon-hook"><code>useFavicon</code></a> - Hook to set a favicon</li>
@@ -333,8 +334,24 @@
 <span class="hljs-keyword">import</span> { useLocalStorage } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
-  <span class="hljs-keyword">const</span> [count, setCount] = useLocalStorage(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">const</span> [count, setCount] = useLocalStorage(<span class="hljs-string">'count'</span>, <span class="hljs-number">0</span>);
 
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You clicked {count} times<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(count + 1)}&gt;
+        Click me
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}</code></pre>
+<h2 id="cookie-hook">Cookie Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useCookie } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [count, setCount] = useCookie(<span class="hljs-string">'count'</span>, <span class="hljs-number">0</span>);
+  <span class="hljs-keyword">const</span> [longCount, setLongCount] = useCookie(<span class="hljs-string">'count'</span>, <span class="hljs-number">0</span>, { <span class="hljs-attr">expires</span>: <span class="hljs-number">21</span> });
   <span class="hljs-keyword">return</span> (
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You clicked {count} times<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
