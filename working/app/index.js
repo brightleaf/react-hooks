@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   Router,
   createHistory,
@@ -17,6 +17,7 @@ const Poster = React.lazy(() => import('../hooks/poster'))
 const Nes = React.lazy(() => import('../hooks/nes'))
 const WebSocketExample = React.lazy(() => import('../hooks/websockets'))
 const Local = React.lazy(() => import('../hooks/local'))
+const Cookie = React.lazy(() => import('../hooks/cookies'))
 const Keypress = React.lazy(() => import('../hooks/keypress'))
 const Keyhandler = React.lazy(() => import('../hooks/keyhandler'))
 const PageViz = React.lazy(() => import('../hooks/page-visibility'))
@@ -58,7 +59,9 @@ const Menu = () => {
       <p className="menu-label">General</p>
       <ul className="menu-list">
         <TabLink to="/examples/local">Local Storage</TabLink>
+        <TabLink to="/examples/cookie">Cookies</TabLink>
         <TabLink to="/examples/keypress">Key Press</TabLink>
+        <TabLink to="/examples/keypressed">Key Pressed</TabLink>
         <TabLink to="/examples/page-visibility">Page Visibility</TabLink>
         <TabLink to="/examples/online-status">Online status</TabLink>
         <TabLink to="/examples/events">Events</TabLink>
@@ -128,7 +131,8 @@ export default class App extends Component {
                 <EventExample path="/examples/events" />
                 <MediaQueryMatch path="/examples/media-query" />
                 <WebSocketExample path="/examples/ws" />
-                <Keyhandler path="/examples/keyhandler" />
+                <Keyhandler path="/examples/keypressed" />
+                <Cookie path="/examples/cookie" />
               </Router>
             </div>
           </div>
