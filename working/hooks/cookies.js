@@ -8,6 +8,7 @@ export default () => {
     description: 'Some text',
   })
   const [name, setName] = useCookie('name', '', { expires: 7 })
+
   const [nameInput, setNameInput] = useState(name)
   console.log(obj)
   return (
