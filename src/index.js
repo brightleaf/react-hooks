@@ -11,7 +11,6 @@ import useKeypressed from './use-keypressed'
 import useKeypress from './use-keypress'
 import useLocalStorage from './use-local-storage'
 import useMediaQuery from './use-media-query'
-import useMutation from './use-mutation'
 import useNes from './use-nes'
 import useOnlineStatus from './use-online-status'
 import usePageVisibility from './use-page-visibility'
@@ -37,7 +36,6 @@ export {
   useKeypress,
   useLocalStorage,
   useMediaQuery,
-  useMutation,
   useNes,
   useOnlineStatus,
   usePageVisibility,
