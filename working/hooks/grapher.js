@@ -23,7 +23,7 @@ export default () => {
     }`,
     { id: 1 }
   )
-  console.log('data', data)
+
   if (data.length === 0 && !loading) {
     makeQuery({ id: 1 })
   }
