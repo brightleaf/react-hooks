@@ -40,8 +40,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@hapi/nes": "^11.2.2",
-    "graphql-request": "^1.8.2"
+    "@hapi/nes": "^11.2.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -61,6 +60,7 @@
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "graphql-request": "^1.8.2",
     "hash-source": "^1.0.4",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -85,7 +85,8 @@
     "webpack-dev-server": "^3.8.1"
   },
   "peerDependencies": {
-    "react": ">= 16.8.6"
+    "react": ">= 16.8.6",
+    "graphql-request": "^1.8.2"
   },
   "jest": {
     "setupFiles": [
