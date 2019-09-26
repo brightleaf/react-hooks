@@ -2,6 +2,7 @@ import { useEffect, useReducer } from 'react'
 import Nes from '@hapi/nes/lib/client'
 
 const reducer = (state, action, ...other) => {
+  const messages = [].concat(state.messages)
   switch (action.type) {
     case 'connecting':
       return { ...state, connecting: true, connected: false }
@@ -10,12 +11,10 @@ const reducer = (state, action, ...other) => {
     case 'disconnected':
       return { ...state, connecting: false, connected: false }
     case 'message':
-      const message = [].concat(state.message)
-      message.push(action.payload.data)
-
+      messages.push(action.payload.data)
       return {
         ...state,
-        message,
+        messages,
         error: null,
         connecting: false,
       }
@@ -29,9 +28,9 @@ const reducer = (state, action, ...other) => {
       return state
   }
 }
-const useNes = (url = 'ws://localhost:4567', subscribe = true) => {
+const useNes = (url = 'ws://localhost:4567', subscribe) => {
   const [state, dispatch] = useReducer(reducer, {
-    message: [],
+    messages: [],
     error: null,
     connecting: true,
     connected: false,
@@ -41,8 +40,8 @@ const useNes = (url = 'ws://localhost:4567', subscribe = true) => {
   useEffect(() => {
     const connectClient = async () => {
       dispatch({ type: 'connecting', payload: {} })
-      return new Promise(async (resolve, reject) => {
-        client.onConnect = update => {
+      return new Promise(async resolve => {
+        client.onConnect = () => {
           dispatch({ type: 'connected' })
           return resolve()
         }
@@ -58,7 +57,7 @@ const useNes = (url = 'ws://localhost:4567', subscribe = true) => {
         }
 
         if (subscribe) {
-          client.subscribe(url, update => {
+          client.subscribe(subscribe, update => {
             dispatch({ type: 'message', payload: { data: update } })
             return resolve()
           })

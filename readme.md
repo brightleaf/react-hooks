@@ -297,7 +297,7 @@ import React from 'react'
 import { useNes } from '@brightleaf/react-hooks'
 export default () => {
 
-  const { message, error, connecting, connected } = useNes(
+  const { messages, error, connecting, connected } = useNes(
     'wss://kev-pi.herokuapp.com'
   )
 
@@ -307,11 +307,11 @@ export default () => {
   const connectMessage = connecting ? <div>Connecting</div> : <div>Not Connecting</div>
   const connectedMessage = connected ? <div>Connected</div> : <div>Not Connected</div>
 
-  const messages = message.map((m, index) => <div key={`key-${index}`}>{m}</div>)
+  const messageList = messages.map((m, index) => <div key={`key-${index}`}>{m}</div>)
   return (
     <div className="App">
       <h1>Messages from Server</h1>
-      <div>{messages}</div>
+      <div>{messageList}</div>
       <div>
         <b>Status Messages</b>
         {connectMessage}

@@ -3,7 +3,7 @@ import { useNes, useTitle } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useNes example from @brightleaf/react-hooks')
 
-  const { message, error, connecting, connected, client } = useNes(
+  const { messages, error, connecting, connected, client } = useNes(
     'wss://kev-pi.herokuapp.com'
   )
 
@@ -24,7 +24,7 @@ export default () => {
   ) : (
     <div className="alert alert-danger">Not Connected</div>
   )
-  const messages = message.map((m, index) => (
+  const messageList = messages.map((m, index) => (
     <div
       className={`mar-0 pad-b-xs ${
         index % 2 ? 'text-secondary' : 'text-primary'
@@ -37,7 +37,7 @@ export default () => {
   return (
     <div className="App content">
       <h2>Messages from Server</h2>
-      <div>{messages}</div>
+      <div>{messageList}</div>
       <div className="pad-t-md mar-t-md">
         <div
           className="button"
