@@ -6,7 +6,6 @@
     "/lib"
   ],
   "main": "./lib/index.js",
-  "module": "lib/brightleaf-react-hooks.esm.js",
   "scripts": {
     "roll": "rollup -c",
     "test": "jest ./src",
