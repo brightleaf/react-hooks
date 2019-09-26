@@ -6,7 +6,7 @@ import useEventListener from './use-event-listener'
 import useFavicon from './use-favicon'
 import useFetch from './use-fetch'
 import useGet from './use-get'
-import useGraphQL, { useQuery } from './use-graphql'
+import { useQuery } from './use-query'
 import useKeypressed from './use-keypressed'
 import useKeypress from './use-keypress'
 import useLocalStorage from './use-local-storage'
@@ -33,7 +33,6 @@ export {
   useFavicon,
   useFetch,
   useGet,
-  useGraphQL,
   useKeypressed,
   useKeypress,
   useLocalStorage,
