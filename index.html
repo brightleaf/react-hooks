@@ -279,7 +279,7 @@
 <span class="hljs-keyword">import</span> { useNes } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
 
-  <span class="hljs-keyword">const</span> { message, error, connecting, connected } = useNes(
+  <span class="hljs-keyword">const</span> { messages, error, connecting, connected } = useNes(
     <span class="hljs-string">'wss://kev-pi.herokuapp.com'</span>
   )
 
@@ -289,11 +289,11 @@
   <span class="hljs-keyword">const</span> connectMessage = connecting ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Connecting<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> : <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Not Connecting<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   <span class="hljs-keyword">const</span> connectedMessage = connected ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Connected<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> : <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Not Connected<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 
-  <span class="hljs-keyword">const</span> messages = message.map(<span class="hljs-function">(<span class="hljs-params">m, index</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">key-</span>${<span class="hljs-attr">index</span>}`}&gt;</span>{m}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>)
+  <span class="hljs-keyword">const</span> messageList = messages.map(<span class="hljs-function">(<span class="hljs-params">m, index</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">key-</span>${<span class="hljs-attr">index</span>}`}&gt;</span>{m}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>)
   <span class="hljs-keyword">return</span> (
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Messages from Server<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{messages}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{messageList}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Status Messages<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
         {connectMessage}
