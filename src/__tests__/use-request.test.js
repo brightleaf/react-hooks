@@ -22,7 +22,7 @@ test('should make a request', async () => {
 
   await waitForNextUpdate()
 
-  expect(result.current.data).toBe('12345')
+  expect(result.current.data).toBe(12345)
 })
 
 test('should make handle error', async () => {

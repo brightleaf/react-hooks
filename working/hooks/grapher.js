@@ -23,10 +23,11 @@ export default () => {
     }`,
     { id: 1 }
   )
-
+  console.log('data', data)
   if (data.length === 0 && !loading) {
     makeQuery({ id: 1 })
   }
+
   if (loading) {
     return (
       <div className="App">
@@ -48,7 +49,7 @@ export default () => {
   }
   return (
     <div className="App content">
-      <h2>{data.person[0].name} - er</h2>
+      <h2>{data.person[0].name}</h2>
       <h3>Pick a number</h3>
       <div className="field is-grouped">
         <p className="control">

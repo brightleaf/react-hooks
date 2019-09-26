@@ -25,6 +25,7 @@ export default () => {
   useEffect(() => {
     makeQuery()
   }, [])
+  console.log('data', data)
   if (loading) {
     return (
       <div className="App">

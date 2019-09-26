@@ -87,7 +87,7 @@ export const useQuery = (
     method: 'POST',
   }
 ) => {
-  const { data, error, loading, makeRequest } = useRequest(url, {
+  const { makeRequest, ...props } = useRequest(url, {
     data: null,
     error: null,
     loading: false,
@@ -106,5 +106,5 @@ export const useQuery = (
     })
   }
 
-  return { data, error, loading, makeQuery }
+  return { makeQuery, ...props }
 }

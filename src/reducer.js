@@ -1,8 +1,12 @@
 export const getData = obj => {
-  if (obj && obj.data && obj.data.data) return obj.data.data
-  if (obj && obj.data) return obj.data
-  if (obj.data === null) return null
-  return obj
+  const data = obj && typeof obj.data === 'string' ? JSON.parse(obj.data) : obj
+
+  if (data && data.data) {
+    return data.data
+  } else if (Array.isArray(data)) {
+    return data
+  }
+  return data
 }
 export const getError = obj => {
   if (obj && obj.error && obj.error.Error) return obj.error.Error
@@ -21,7 +25,7 @@ export const reducer = (state, action) => {
     case 'success':
       return {
         ...state,
-        data: action.payload.data,
+        data: getData(action.payload),
         error: null,
         loading: false,
         complete: true,
@@ -29,7 +33,7 @@ export const reducer = (state, action) => {
     case 'error':
       return {
         ...state,
-        data: getData(action.payload),
+        data: getData(action.payload.data),
         error: true,
         errorDetails: getError(action.payload),
         loading: false,

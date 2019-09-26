@@ -69,6 +69,7 @@ const useRequest = (url = '', config = { method: 'GET' }) => {
           payload: result,
         })
       }
+
       return dispatch({ type: 'success', payload: { data: result } })
     }
     const result = await resp.text()
