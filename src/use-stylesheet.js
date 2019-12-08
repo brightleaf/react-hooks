@@ -1,16 +1,18 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const useStyleSheet = href => {
+  const [sheet, setSheet] = useState(href)
   useEffect(() => {
     const link = document.createElement('link')
     link.type = 'text/css'
     link.rel = 'stylesheet'
-    link.href = href
+    link.href = sheet
     document.getElementsByTagName('head')[0].appendChild(link)
     return () => {
       document.getElementsByTagName('head')[0].removeChild(link)
     }
-  }, [href])
+  }, [sheet])
+  return [sheet, setSheet]
 }
 
 export { useStyleSheet }
