@@ -1,22 +1,17 @@
-import React, { useState } from 'react'
-import {
-  useFavicon,
-  useEventListener,
-  useTitle,
-  useCustomEvent,
-} from '@brightleaf/react-hooks'
-import Home from '../app/home'
-import Example from './samples/event.md'
+## Event Hooks Example
 
-export default () => {
-  useTitle('useEventListener example from @brightleaf/react-hooks')
-  useFavicon('https://brightleaf.github.io/react-hooks/favicon.ico')
+```jsx
+import React, { useState } from 'react'
+import { useEventListener, useTitle, useCustomEvent } from '@brightleaf/react-hooks'
+
+ export default () => {
+
   const [state, setState] = useState(window.scrollY)
   const onScroll = e => {
     setState(window.scrollY)
   }
   const onBrightleafEvent = e => {
-    console.log('on brightleaf event', e)
+    console.info('on brightleaf event', e)
   }
   useEventListener('scroll', onScroll)
   const fireEvent = useCustomEvent('brightleafEvent')
@@ -40,10 +35,8 @@ export default () => {
       >
         {state} scroll position
       </span>
-      <br />
-      <div className="content" dangerouslySetInnerHTML={{ __html: Example }} />
-      <br />
-      <Home></Home>
+      <div>...page content</div>
     </div>
   )
 }
+```

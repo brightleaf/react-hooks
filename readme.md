@@ -18,6 +18,7 @@ Useful React Hooks
 * [`useEventListener`](#event-hook) - Hook for binding to an hander to DOM event
 * [`useFavicon`](#favicon-hook) - Hook to set a favicon
 * [`useTitle`](#title-hook) - Hook to manipulate the page title
+* [`useMetaTag`](#meta-tag-hook) - Hook to manipulate meta tags
 * [`useScript`](#script-hook) - Hook to add JavaScript to the page
 * [`useStyles`](#style-hook) - Hook to add CSS to the page
 * [`useStyleSheet`](#stylesheet-hook) - Hook to add a css file to the page
@@ -281,6 +282,26 @@ export default () => {
 }
 ```
 
+## Meta Tag Hook
+
+```jsx
+import React, { useEffect } from 'react'
+import { useMetaTag } from '@brightleaf/react-hooks'
+
+export default () => {
+  const [metaValue, setMetaValue] = useMetaTag('description', 'Brightleaf JS React Hooks')
+  // <meta name="description" content="Brightleaf JS React Hooks">
+  setMetaValue('Awesome React Hooks from Brightleaf JS')
+  // <meta name="description" content="Awesome React Hooks from Brightleaf JS">
+  useMetaTag(
+    'og:title',
+    'Brightleaf JS React Hooks',
+    'property'
+  )
+  // <meta property="og:title" content="Brightleaf JS React Hooks">
+  return <div>The Page</div>
+}
+```
 # NES Hook
 
 Client hook for connecting to an [NES](https://github.com/hapijs/nes) instance

@@ -1,13 +1,12 @@
 import React from 'react'
-import {
-  useOnlineStatus,
-  useTitle,
-  useMediaQuery,
-} from '@brightleaf/react-hooks'
+import { useOnlineStatus, useTitle, useMetaTag } from '@brightleaf/react-hooks'
 export default () => {
   useTitle('useOnlineStatus example from @brightleaf/react-hooks')
   const { offline, online } = useOnlineStatus()
-
+  useMetaTag(
+    'description',
+    'useOnlineStatus hook example from @brightleaf/react-hooks'
+  )
   return (
     <div className="App content">
       <h3>
