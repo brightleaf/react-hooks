@@ -46,6 +46,7 @@
 <li><a href="#event-hook"><code>useEventListener</code></a> - Hook for binding to an hander to DOM event</li>
 <li><a href="#favicon-hook"><code>useFavicon</code></a> - Hook to set a favicon</li>
 <li><a href="#title-hook"><code>useTitle</code></a> - Hook to manipulate the page title</li>
+<li><a href="#meta-tag-hook"><code>useMetaTag</code></a> - Hook to manipulate meta tags</li>
 <li><a href="#script-hook"><code>useScript</code></a> - Hook to add JavaScript to the page</li>
 <li><a href="#style-hook"><code>useStyles</code></a> - Hook to add CSS to the page</li>
 <li><a href="#stylesheet-hook"><code>useStyleSheet</code></a> - Hook to add a css file to the page</li>
@@ -268,6 +269,23 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
   useTitle(<span class="hljs-string">'Brightleaf JS Hooks'</span>)
 
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>The Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+}</code></pre>
+<h2 id="meta-tag-hook">Meta Tag Hook</h2>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React, { useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useMetaTag } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [metaValue, setMetaValue] = useMetaTag(<span class="hljs-string">'description'</span>, <span class="hljs-string">'Brightleaf JS React Hooks'</span>)
+  <span class="hljs-comment">// &lt;meta name="description" content="Brightleaf JS React Hooks"&gt;</span>
+  setMetaValue(<span class="hljs-string">'Awesome React Hooks from Brightleaf JS'</span>)
+  <span class="hljs-comment">// &lt;meta name="description" content="Awesome React Hooks from Brightleaf JS"&gt;</span>
+  useMetaTag(
+    <span class="hljs-string">'og:title'</span>,
+    <span class="hljs-string">'Brightleaf JS React Hooks'</span>,
+    <span class="hljs-string">'property'</span>
+  )
+  <span class="hljs-comment">// &lt;meta property="og:title" content="Brightleaf JS React Hooks"&gt;</span>
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>The Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 }</code></pre>
 <h1 id="nes-hook">NES Hook</h1>
