@@ -44,12 +44,14 @@ module.exports = {
       template: './working/index.html',
       historyApiFallback: true,
     }),
-    new CopyPlugin([
-      {
-        from: path.join(process.cwd(), '/public'),
-        to: path.join(process.cwd(), '/dist'),
-      },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.join(process.cwd(), '/public'),
+          to: path.join(process.cwd(), '/dist'),
+        },
+      ],
+    }),
   ],
   resolve: {
     extensions: ['*', '.mjs', '.js', '.jsx'],
