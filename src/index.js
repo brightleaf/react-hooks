@@ -1,6 +1,7 @@
 import useAsync from './use-async'
 import useClickOutside from './use-click-outside'
 import useCookie from './use-cookie'
+import { useCustomEvent } from './use-custom-event'
 import useEvent from './use-event'
 import useEventListener from './use-event-listener'
 import useFavicon from './use-favicon'
@@ -11,6 +12,7 @@ import useKeypressed from './use-keypressed'
 import useKeypress from './use-keypress'
 import useLocalStorage from './use-local-storage'
 import useMediaQuery from './use-media-query'
+import useMetaTag from './use-meta-tag'
 import useNes from './use-nes'
 import useOnlineStatus from './use-online-status'
 import usePageVisibility from './use-page-visibility'
@@ -27,6 +29,7 @@ export {
   useAsync,
   useClickOutside,
   useCookie,
+  useCustomEvent,
   useEvent,
   useEventListener,
   useFavicon,
@@ -36,6 +39,7 @@ export {
   useKeypress,
   useLocalStorage,
   useMediaQuery,
+  useMetaTag,
   useNes,
   useOnlineStatus,
   usePageVisibility,
