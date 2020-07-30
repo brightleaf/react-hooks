@@ -10,6 +10,7 @@ import createHashSource from 'hash-source'
 import Intro from './intro'
 import Home from './home'
 const Fetch = React.lazy(() => import('../hooks/fetcher'))
+const FormHook = React.lazy(() => import('../hooks/form'))
 const Graph = React.lazy(() => import('../hooks/graph'))
 const Grapher = React.lazy(() => import('../hooks/grapher'))
 const Getter = React.lazy(() => import('../hooks/getter'))
@@ -58,6 +59,7 @@ const Menu = () => {
       </ul>
       <p className="menu-label">General</p>
       <ul className="menu-list">
+        <TabLink to="/examples/form">Form</TabLink>
         <TabLink to="/examples/local">Local Storage</TabLink>
         <TabLink to="/examples/cookie">Cookies</TabLink>
         <TabLink to="/examples/keypress">Key Press</TabLink>
@@ -119,6 +121,7 @@ export default class App extends Component {
                 <Home path="/" />
                 <Home path="*" />
                 <Fetch path="/examples" />
+                <FormHook path="/examples/form" />
                 <Getter path="/examples/getter" />
                 <Graph path="/examples/graph" />
                 <Grapher path="/examples/grapher" />

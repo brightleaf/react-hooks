@@ -6,6 +6,7 @@ import useEvent from './use-event'
 import useEventListener from './use-event-listener'
 import useFavicon from './use-favicon'
 import useFetch from './use-fetch'
+import useForm from './use-form'
 import useGet from './use-get'
 import { useQuery } from './use-query'
 import useKeypressed from './use-keypressed'
@@ -34,6 +35,7 @@ export {
   useEventListener,
   useFavicon,
   useFetch,
+  useForm,
   useGet,
   useKeypressed,
   useKeypress,

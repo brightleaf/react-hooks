@@ -4,6 +4,7 @@ Useful React Hooks
 
 * [`useAsync`](#async-hook) - Hook to an async function
 * [`useFetch`](#fetch-hook) - Hook to use Fetch
+* [`useForm`](#form-hook) - Hook to make using forms super easy
 * [`useGet`](#get-hook) - Hook to make a get request
 * [`usePost`](#post-hook) - Hook to make an HTTP Post
 * [`useClickOutside`](#click-outside-hook) - Hook to handle a click outside an element
@@ -78,6 +79,74 @@ export default () => {
     <div className="App">
       <h1>{data[0].name}</h1>
     </div>
+  )
+}
+```
+
+## Form Hook
+
+```javascript
+import React, { useState } from 'react'
+import { useForm } from '@brightleaf/react-hooks'
+export default () => {
+  const { addToForm, onSubmit } = useFetch()
+ 
+  return (
+    <form
+        onSubmit={onSubmit(data => {
+          console.info('onsubmit handler', data)
+        })}
+      >
+        <fieldset>
+          <legend>Form Hook</legend>
+          <input
+            name="firstName"
+            type="text"
+            ref={addToForm}
+            defaultValue="Brightleaf"
+          />
+          <input
+            name="lastName"
+            type="text"
+            ref={addToForm}
+            defaultValue="Hooks"
+          />
+          <br />
+          <select ref={addToForm} name="dropdown" defaultValue="13">
+            <optgroup label="First Group">
+              <option value="1">First</option>
+              <option value="2">Second</option>
+              <option value="3">Third</option>
+            </optgroup>
+            <optgroup label="Second Group">
+              <option value="11">Second First</option>
+              <option value="12">Second Second</option>
+              <option value="13">Second Third</option>
+            </optgroup>
+          </select>
+          <br />
+          <input type="checkbox" name="check" defaultChecked ref={addToForm} />
+          <br />
+          <div>
+            <label>The Radio</label>
+            <div>
+              <label> First </label>
+              <input name="rgroup" type="radio" value="first" ref={addToForm} />
+            </div>
+            <div>
+              <label> Second </label>
+              <input
+                name="rgroup"
+                type="radio"
+                value="second"
+                ref={addToForm}
+              />
+            </div>
+          </div>
+          <br />
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
   )
 }
 ```
