@@ -32,6 +32,7 @@
 <ul>
 <li><a href="#async-hook"><code>useAsync</code></a> - Hook to an async function</li>
 <li><a href="#fetch-hook"><code>useFetch</code></a> - Hook to use Fetch</li>
+<li><a href="#form-hook"><code>useForm</code></a> - Hook to make using forms super easy</li>
 <li><a href="#get-hook"><code>useGet</code></a> - Hook to make a get request</li>
 <li><a href="#post-hook"><code>usePost</code></a> - Hook to make an HTTP Post</li>
 <li><a href="#click-outside-hook"><code>useClickOutside</code></a> - Hook to handle a click outside an element</li>
@@ -99,6 +100,70 @@
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{data[0].name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}</code></pre>
+<h2 id="form-hook">Form Hook</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { useForm } <span class="hljs-keyword">from</span> <span class="hljs-string">'@brightleaf/react-hooks'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { addToForm, onSubmit } = useFetch()
+
+  <span class="hljs-keyword">return</span> (
+    &lt;form
+        onSubmit={onSubmit(data =&gt; {
+          console.info('onsubmit handler', data)
+        })}
+      &gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;Form Hook&lt;/legend&gt;
+          &lt;input
+            name="firstName"
+            type="text"
+            ref={addToForm}
+            defaultValue="Brightleaf"
+          /&gt;
+          &lt;input
+            name="lastName"
+            type="text"
+            ref={addToForm}
+            defaultValue="Hooks"
+          /&gt;
+          &lt;br /&gt;
+          &lt;select ref={addToForm} name="dropdown" defaultValue="13"&gt;
+            &lt;optgroup label="First Group"&gt;
+              &lt;option value="1"&gt;First&lt;/option&gt;
+              &lt;option value="2"&gt;Second&lt;/option&gt;
+              &lt;option value="3"&gt;Third&lt;/option&gt;
+            &lt;/optgroup&gt;
+            &lt;optgroup label="Second Group"&gt;
+              &lt;option value="11"&gt;Second First&lt;/option&gt;
+              &lt;option value="12"&gt;Second Second&lt;/option&gt;
+              &lt;option value="13"&gt;Second Third&lt;/option&gt;
+            &lt;/optgroup&gt;
+          &lt;/select&gt;
+          &lt;br /&gt;
+          &lt;input type="checkbox" name="check" defaultChecked ref={addToForm} /&gt;
+          &lt;br /&gt;
+          &lt;div&gt;
+            &lt;label&gt;The Radio&lt;/label&gt;
+            &lt;div&gt;
+              &lt;label&gt; First &lt;/label&gt;
+              &lt;input name="rgroup" type="radio" value="first" ref={addToForm} /&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;label&gt; Second &lt;/label&gt;
+              &lt;input
+                name="rgroup"
+                type="radio"
+                value="second"
+                ref={addToForm}
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;br /&gt;
+          &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/fieldset&gt;
+      &lt;/form&gt;
   )
 }</code></pre>
 <h2 id="graphql-hook">GraphQL Hook</h2>
