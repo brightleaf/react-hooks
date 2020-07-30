@@ -1,6 +1,6 @@
 {
   "name": "@brightleaf/react-hooks",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Useful react hooks",
   "files": [
     "/lib"
