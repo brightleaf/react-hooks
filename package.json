@@ -84,8 +84,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "peerDependencies": {
-    "react": ">= 16.8.6",
-    "graphql-request": "^1.8.2"
+    "react": "16.x || 17.x || 18.x",
+    "graphql-request": "*"
   },
   "jest": {
     "setupFiles": [
